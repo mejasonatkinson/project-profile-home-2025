@@ -1,0 +1,2 @@
+**Title:** Molecules
+**Description:** Molecules are groups of atoms bonded together, functioning as a single unit. They form simple UI components, such as a search form (composed of an input field, a label, and a button). Molecules combine multiple atoms to create more complex structures with specific functionalities.

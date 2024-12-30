@@ -1,0 +1,2 @@
+**Title:** Pages
+**Description:** Pages are specific instances of templates filled with real content. They represent the final stage of the design, showing how the UI will appear with actual data. Pages validate the design system by ensuring all components function together harmoniously in a realistic scenario.

@@ -1,0 +1,2 @@
+**Title:** Atoms
+**Description:** These are the basic building blocks of the design system. Atoms include HTML elements like buttons, inputs, labels, and other fundamental elements. They serve as the raw materials for all other components and encapsulate the most basic styles and behaviors.
