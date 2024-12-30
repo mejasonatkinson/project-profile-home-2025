@@ -1,6 +1,27 @@
 <script setup>
 import { onMounted } from 'vue';
 import { reactive } from 'vue';
+
+import Me from '@/assets/images/me/me.png';
+
+import AstraZeneca from '@/assets/images/company-logos/AstraZeneca.jpg';
+import DVSA from '@/assets/images/company-logos/DVSA.png';
+import Google from '@/assets/images/company-logos/google.jpg';
+
+import Lego from '@/assets/images/company-logos/Lego.png';
+import Meta from '@/assets/images/company-logos/Meta.png';
+import NCSC from '@/assets/images/company-logos/NCSC.jpg';
+
+import Perkbox from '@/assets/images/company-logos/Perkbox.png';
+import RedBull from '@/assets/images/company-logos/redbull.jpg';
+import Snap from '@/assets/images/company-logos/snap.jpg';
+
+import RockMission from '@/assets/images/company-logos/rockmission.jpg';
+import Sponge from '@/assets/images/company-logos/sponge.jpg';
+
+import MaleProfile from '@/assets/images/recommendations/m.png';
+import FemaleProfile from '@/assets/images/recommendations/f.png';
+
 const state = reactive({
     light: true,
 });
@@ -175,7 +196,7 @@ sections.forEach(section => {
                 </p>
             </div>
             <div class="bg-color-teal p-6 lg:flex-1 relative order-first lg:order-last h-[500px] lg:h-auto z-10">
-                <img src="../../assets/images/me/me.png" alt="Profile Image Of Jason Atkinson"
+                <img :src="Me" alt="Profile Image Of Jason Atkinson"
                     class="absolute inset-0 w-full h-full object-cover">
             </div>
         </div>
@@ -230,7 +251,7 @@ sections.forEach(section => {
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
-                    <img src="../../assets/images/company-logos/meta.png" alt="Meta" class="w-16 h-16 mb-4 bg-white">
+                    <img :src="Meta" alt="Meta" class="w-16 h-16 mb-4 bg-white">
                     <div>
                         <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Meta @ Sponge</h3>
                         <p class="mb-6 text-sm">Worked on the frontend for their e-learning material targeted at
@@ -248,7 +269,7 @@ sections.forEach(section => {
                 </div>
                 <div
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
-                    <img src="../../assets/images/company-logos/google.jpg" alt="Google" class="w-16 h-16 mb-4">
+                    <img :src="Google" alt="Google" class="w-16 h-16 mb-4">
                     <div>
                         <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Google @ Sponge</h3>
                         <p class="mb-6 text-sm">Built the landing page and language selector theme for all courses
@@ -268,7 +289,7 @@ sections.forEach(section => {
                 </div>
                 <div
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
-                    <img src="../../assets/images/company-logos/lego.png" alt="Lego" class="w-16 h-16 mb-4">
+                    <img :src="Lego" alt="Lego" class="w-16 h-16 mb-4">
                     <div>
                         <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Lego @ Sponge</h3>
                         <p class="mb-6 text-sm">Developed the landing page and language selector theme for all courses
@@ -289,7 +310,7 @@ sections.forEach(section => {
                 </div>
                 <div
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
-                    <img src="../../assets/images/company-logos/NCSC.jpg" alt="NCSC" class="w-16 h-16 mb-4">
+                    <img :src="NCSC" alt="NCSC" class="w-16 h-16 mb-4">
                     <div>
                         <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> NCSC @ Sponge</h3>
                         <p class="mb-6 text-sm">Contributed to the <a href="https://www.ncsc.gov.uk/cyberfirst/overview"
@@ -314,7 +335,7 @@ sections.forEach(section => {
                 </div>
                 <div
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
-                    <img src="../../assets/images/company-logos/DVSA.png" alt="DVSA" class="w-16 h-16 mb-4">
+                    <img :src="DVSA" alt="DVSA" class="w-16 h-16 mb-4">
                     <div>
                         <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> DVSA @ Sponge</h3>
                         <p class="mb-6 text-sm">
@@ -362,7 +383,7 @@ sections.forEach(section => {
                 </div>
                 <div
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
-                    <img src="../../assets/images/company-logos/snap.jpg" alt="Snap Inc" class="w-16 h-16 mb-4">
+                    <img :src="Snap" alt="Snap Inc" class="w-16 h-16 mb-4">
                     <div>
                         <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">🧑‍🏫</span> Snap Inc @ Sponge
                         </h3>
@@ -380,7 +401,7 @@ sections.forEach(section => {
                 </div>
                 <div
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
-                    <img src="../../assets/images/company-logos/AstraZeneca.jpg" alt="AstraZeneca"
+                    <img :src="AstraZeneca" alt="AstraZeneca"
                         class="w-16 h-16 mb-4">
                     <div>
                         <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> AstraZeneca @ Sponge
@@ -400,7 +421,7 @@ sections.forEach(section => {
                 </div>
                 <div
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
-                    <img src="../../assets/images/company-logos/redbull.jpg" alt="Red Bull" class="w-16 h-16 mb-4">
+                    <img :src="RedBull" alt="Red Bull" class="w-16 h-16 mb-4">
                     <div>
                         <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Red Bull @ Sponge
                         </h3>
@@ -418,7 +439,7 @@ sections.forEach(section => {
                 </div>
                 <div
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
-                    <img src="../../assets/images/company-logos/Perkbox.png" alt="Perkbox" class="w-16 h-16 mb-4">
+                    <img :src="Perkbox" alt="Perkbox" class="w-16 h-16 mb-4">
                     <div>
                         <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> <span
                                 class="emjo inline">🔧</span> Perkbox @ Rock Mission</h3>
@@ -464,7 +485,7 @@ sections.forEach(section => {
                             </div>
                         </div>
                         <div>
-                            <img src="../../assets/images/recommendations/f.png" alt=""
+                            <img :src="FemaleProfile" alt=""
                                 class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
                             <p class="text-color-off-black text-sm text-center">Project Manager</p>
                         </div>
@@ -492,7 +513,7 @@ Source: "Jason has outstanding communication skills and excellent approach to ti
                             </div>
                         </div>
                         <div>
-                            <img src="../../assets/images/recommendations/f.png" alt=""
+                            <img :src="FemaleProfile" alt=""
                                 class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
                             <p class="text-color-off-black text-sm text-center">Engineering Operations Manager</p>
                         </div>
@@ -524,7 +545,7 @@ Source: "One of Jason's most admirable traits is his openness to feedback... wel
                             </div>
                         </div>
                         <div>
-                            <img src="../../assets/images/recommendations/f.png" alt=""
+                            <img :src="FemaleProfile" alt=""
                                 class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
                             <p class="text-color-off-black text-sm text-center">Human Resources Generalist</p>
                         </div>
@@ -553,7 +574,7 @@ Source: "Jason is a very professional and driven individual, always eager to lea
                             </div>
                         </div>
                         <div>
-                            <img src="../../assets/images/recommendations/m.png" alt=""
+                            <img :src="MaleProfile" alt=""
                                 class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
                             <p class="text-color-off-black text-sm text-center">Senior Software Developer</p>
                         </div>
