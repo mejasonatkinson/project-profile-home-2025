@@ -7,35 +7,84 @@
 
 :root {
 
-    --paper-texture: url('assets/images/textures/paper.png');
+  --paper-texture: url('assets/images/textures/paper.png');
 
-    /* Light Mode Colors */
-    --color-off-white: #F5F5F5;
-    --color-off-black: #141414;
-    --color-yellow: #FFAA01;
-    --color-red: #FE0000;
-    --color-teal: #009899;
-  
-      /* Font Families */
-    --font-primary: 'Roboto', sans-serif;
-    --font-secondary: 'Montserrat', sans-serif;
-    --font-accent: 'Playfair Display', serif;
+  /* Light Mode Colors */
+  --color-off-white: #F5F5F5;
+  --color-off-black: #141414;
+  --color-yellow: #FFAA01;
+  --color-red: #FE0000;
+  --color-teal: #009899;
 
-    /* Font Weights */
-    --font-weight-regular: 400;
-    --font-weight-light: 300;
-    --font-weight-medium: 500;
-    --font-weight-bold: 700;
-    --font-weight-extra-bold: 800;
+  /* Font Families */
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'Montserrat', sans-serif;
+  --font-accent: 'Playfair Display', serif;
 
-  }
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
 
-  .dark {
-    /* Dark Mode Colors */
-    /* Will need to be changed... */
-    --color-off-white: #D3D3D3;
-    --color-off-black: #D3D3D3;
-    --color-yellow: #1E1E1E;
-    --color-red: #DC143C;
-    --color-teal: #009899;
-  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.dark {
+  --color-off-white: #F5F5F5;
+  --color-off-black: #1E1E1E;
+  --color-yellow: #DAA520;
+  --color-red: #DC143C;
+  --color-teal: #006666;
+}
+
+.dark #hero {
+  --color-yellow: #1E1E1E;
+  --color-off-black: #A9A9A9;
+  --color-off-white: #A9A9A9;
+}
+
+.dark #about {
+  --color-off-black: #A9A9A9;
+  --color-off-white: #1E1E1E;
+}
+
+.dark #services {
+  --color-off-white: #A9A9A9;
+  --color-off-black: #A9A9A9;
+  --color-yellow: #1E1E1E;
+}
+
+.dark #services h2, .dark #services hr { 
+  --color-off-black: #1E1E1E;
+}
+
+.dark #projects {
+  --color-off-white: #A9A9A9;
+  --color-yellow: #1E1E1E;
+}
+
+.dark #testimonials {
+  --color-off-white: #A9A9A9;
+  --color-yellow: #1E1E1E;
+}
+
+.dark #testimonials .testimonial-item {
+  --color-off-black: #A9A9A9;
+}
+
+.dark #contact {
+  --color-off-white: #A9A9A9;
+}
+
+.dark footer {
+  --color-off-white: #A9A9A9;
+}
+
+.dark img, .dark .emjo {
+  filter: brightness(0.7);
+}

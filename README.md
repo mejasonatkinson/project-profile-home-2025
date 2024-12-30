@@ -8,17 +8,17 @@ This is the main landing page for my personal website. It’s a simple, one-page
 
 **Plans:** I plan to introduce more sections to the landing page and link to additional micro-sites.
 
-- [ ] About (Section)
+- [x] About (Section)
   - [ ] About (Page)
 - [ ] Easter Eggs (Section): Just for fun!
-- [ ] Services (Section)
+- [x] Services (Section)
   - [ ] Services (Micro Site)
-- [ ] Projects (Section)
+- [x] Projects (Section)
   - [ ] Projects (Micro Site)
 - [ ] Skills (Section)
-- [ ] Recommendations (Section)
-- [ ] Contact (Section): Social Media + Email
-  - [ ] Social Media (Section)
+- [x] Recommendations (Section)
+- [x] Contact (Section): Social Media + Email
+  - [x] Social Media (Section)
   - [ ] Contact Form (Section || Page)
 - [ ] Blog (Micro Site)
   - [ ] Blog (Section)
