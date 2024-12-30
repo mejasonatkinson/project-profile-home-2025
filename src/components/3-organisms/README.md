@@ -1,0 +1,2 @@
+**Title:** Organisms
+**Description:** Organisms are relatively complex components composed of groups of molecules and/or atoms. They form distinct sections of an interface, such as a navigation bar, a card layout, or a product listing. Organisms define the structure and provide context to the molecules and atoms within them.

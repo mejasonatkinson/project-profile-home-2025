@@ -1,0 +1,2 @@
+**Title:** Templates
+**Description:** Templates are page-level objects that place components into a layout and articulate the design’s underlying content structure. They define the placement of organisms and the overall page layout without specifying the final content. Templates help visualize the flow and arrangement of various components.
