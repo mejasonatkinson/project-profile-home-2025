@@ -1,7 +1,3 @@
-Your README is clear and well-structured, but there are a few areas where it can be improved for better readability and professionalism. Here’s an edited version:
-
----
-
 ## Overview
 
 This is the main landing page for my personal website. It’s a simple, one-page site designed to link to my social media accounts and online presence, providing an easy way for people to contact me while I look for work opportunities.
@@ -59,7 +55,3 @@ To start the development server, run:
 ```sh
 npm run dev
 ```
-
----
-
-This version maintains all the essential information while improving the structure and readability. It provides clear headings, concise descriptions, and proper formatting for better presentation.
