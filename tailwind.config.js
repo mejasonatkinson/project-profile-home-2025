@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        primary: ['Roboto', 'sans-serif'],
+        secondary: ['Montserrat', 'sans-serif'],
+      },
       colors: {
         "color-off-white": "var(--color-off-white)",
         "color-off-black": "var(--color-off-black)",

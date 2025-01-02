@@ -134,23 +134,23 @@ sections.forEach(section => {
     <!-- Hero Section -->
     <section id="hero" class="relative flex items-center justify-center h-screen bg-color-yellow">
         <div class="relative px-6 md:px-12 w-full max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-color-off-white mb-8 drop-shadow-md"
+            <h1 class="font-secondary text-5xl md:text-6xl lg:text-7xl font-extrabold text-color-off-white mb-8 drop-shadow-md"
                 aria-label="Hey, I'm Jason Atkinson">
                 Hey, <span class="emjo animate-wave inline-block" aria-hidden="true">👋</span> I'm <span
                     class="text-color-red">Jason
                     <span class="hidden xl:inline">Atkinson</span></span>
             </h1>
-            <p class="text-xl md:text-2xl lg:text-4xl font-bold text-color-teal mb-16 drop-shadow-md"
+            <p class="font-primary text-xl md:text-2xl lg:text-4xl font-bold text-color-teal mb-16 drop-shadow-md"
                 aria-label="Developer, Designer, Artist, Creative Coder, Problem Solver">
                 _____ <span id="typing"></span> <span
                     class="inline-block w-[4px] h-[40px] bg-color-teal animate-blink align-bottom"> </span>
             </p>
-            <p class="text-lg md:text-xl text-color-off-black mb-8">
+            <p class="font-primary text-lg md:text-xl text-color-off-black mb-8">
                 Based in the UK — Exploring the future of technology, design, learning, diversity and creativity.
             </p>
             <div class="flex gap-8 mb-8">
                 <a href="#about"
-                    class="inline-block hover:animate-bounce-sm px-6 py-3 text-lg font-bold text-color-teal border-2 border-color-off-white bg-color-off-white rounded-md hover:bg-color-teal hover:border-color-teal hover:text-color-off-white shadow-md transition-all"
+                    class="font-secondary inline-block hover:animate-bounce-sm px-6 py-3 text-lg font-bold text-color-teal border-2 border-color-off-white bg-color-off-white rounded-md hover:bg-color-teal hover:border-color-teal hover:text-color-off-white shadow-md transition-all"
                     aria-label="Learn more about me">
                     Learn More
                 </a>
@@ -162,20 +162,20 @@ sections.forEach(section => {
         <div class="max-w-6xl mx-auto flex flex-col lg:flex-row opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
             <div
                 class="bg-color-off-white text-color-off-black text-left p-12 lg:flex-1 order-last lg:order-first lg:transition-transform lg:transform cursor-default z-20">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Who Am I?</h2>
+                <h2 class="font-secondary text-3xl md:text-4xl font-bold mb-6">Who Am I?</h2>
                 <hr
                     class="h-[3px] w-[130px] mt-[30px] mb-[45px] border-color-off-black text-color-off-black bg-color-off-black" />
-                <p class="text-sm md:text-sm mb-6">
+                <p class="font-primary text-sm md:text-sm mb-6">
                     With over 10 years of experience and nearly 20 years of coding for fun, I’ve developed a robust set
                     of skills
                     and
                     a love for solving problems!
                 </p>
-                <p class="text-sm md:text-sm mb-6">
+                <p class="font-primary text-sm md:text-sm mb-6">
                     My expertise spans JavaScript, PHP, and Python, along with various frameworks,
                     libraries, and more.
                 </p>
-                <p class="text-sm md:text-sm mb-6">
+                <p class="font-primary text-sm md:text-sm mb-6">
                     I’m comfortable working in diverse environments—whether it’s in-person, hybrid, or remote. I’ve
                     contributed to
                     projects in various industries, including <span class="emjo inline">🏥</span> Medical, <span
@@ -188,7 +188,7 @@ sections.forEach(section => {
                     companies at
                     different stages, from startups and early years to growth and established enterprises.
                 </p>
-                <p class="text-sm md:text-sm mb-6">
+                <p class="font-primary text-sm md:text-sm mb-6">
                     Collaboration is key to my work. I’ve teamed up with stakeholders, founders, marketers, designers,
                     SEO and
                     social media specialists, learning experts, and fellow developers. My natural curiosity drives me to
@@ -204,7 +204,7 @@ sections.forEach(section => {
     <!-- Services Section -->
     <section id="services" class="py-16 px-6 md:px-12 bg-color-off-white">
         <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-color-off-black">Services</h2>
+            <h2 class="font-secondary text-3xl md:text-4xl font-bold mb-12 text-center text-color-off-black">Services</h2>
             <hr
                 class="h-[3px] w-[130px] m-auto mt-[30px] mb-[45px] border-color-off-black text-color-off-black bg-color-off-black">
             <div class="mb-12">
@@ -213,8 +213,8 @@ sections.forEach(section => {
                     <div
                         class="p-6 bg-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
                         <div class="emjo text-5xl md:text-6xl lg:text-7xl mb-12 text-center">💻</div>
-                        <h3 class="text-2xl font-semibold text-color-off-black mb-4 text-center">Development</h3>
-                        <p class="text-sm md:text-sm text-center">Creating responsive and user-friendly web pages with
+                        <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Development</h3>
+                        <p class="font-primary text-sm md:text-sm text-center">Creating responsive and user-friendly web pages with
                             clean code
                             and seamless UI/UX enhancements.</p>
                     </div>
@@ -222,9 +222,9 @@ sections.forEach(section => {
                     <div
                         class="p-6 bg-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
                         <div class="emjo text-5xl md:text-6xl lg:text-7xl mb-12 text-center">🔧</div>
-                        <h3 class="text-2xl font-semibold text-color-off-black mb-4 text-center">Fullstack Development
+                        <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Fullstack Development
                         </h3>
-                        <p class="text-sm md:text-sm text-center">Building robust backend systems with secure
+                        <p class="font-primary text-sm md:text-sm text-center">Building robust backend systems with secure
                             authentication,
                             database management, and seamless fullstack integration.</p>
                     </div>
@@ -232,8 +232,8 @@ sections.forEach(section => {
                     <div
                         class="p-6 bg-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
                         <div class="emjo text-5xl md:text-6xl lg:text-7xl mb-12 text-center">🎨</div>
-                        <h3 class="text-2xl font-semibold text-color-off-black mb-4 text-center">Design</h3>
-                        <p class="text-sm md:text-sm text-center">Crafting beautiful and functional designs tailored to
+                        <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Design</h3>
+                        <p class="font-primary text-sm md:text-sm text-center">Crafting beautiful and functional designs tailored to
                             meet your
                             needs and enhance user experience.</p>
                     </div>
@@ -244,7 +244,7 @@ sections.forEach(section => {
     <!-- Projects -->
     <section id="projects" class="py-16 px-6 md:px-12 bg-color-off-black">
         <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center text-color-off-white">Projects I've worked on
+            <h2 class="font-secondary text-3xl md:text-4xl font-bold mb-6 text-center text-color-off-white">Projects I've worked on
             </h2>
             <hr
                 class="h-[3px] w-[130px] m-auto mt-[30px] mb-[45px] border-color-off-white text-color-off-white bg-color-off-white" />
@@ -253,10 +253,10 @@ sections.forEach(section => {
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
                     <img :src="Meta" alt="Meta" class="w-16 h-16 mb-4 bg-white">
                     <div>
-                        <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Meta @ Sponge</h3>
-                        <p class="mb-6 text-sm">Worked on the frontend for their e-learning material targeted at
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Meta @ Sponge</h3>
+                        <p class="font-primary mb-6 text-sm">Worked on the frontend for their e-learning material targeted at
                             developers.</p>
-                        <p class="text-xs"><span
+                        <p class="font-primary text-xs"><span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">VueJS</span>
@@ -271,10 +271,10 @@ sections.forEach(section => {
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
                     <img :src="Google" alt="Google" class="w-16 h-16 mb-4">
                     <div>
-                        <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Google @ Sponge</h3>
-                        <p class="mb-6 text-sm">Built the landing page and language selector theme for all courses
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Google @ Sponge</h3>
+                        <p class="font-primary mb-6 text-sm">Built the landing page and language selector theme for all courses
                             produced by Sponge.</p>
-                        <p class="text-xs"><span
+                        <p class="font-primary text-xs"><span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">NodeJS</span>
@@ -291,11 +291,11 @@ sections.forEach(section => {
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
                     <img :src="Lego" alt="Lego" class="w-16 h-16 mb-4">
                     <div>
-                        <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Lego @ Sponge</h3>
-                        <p class="mb-6 text-sm">Developed the landing page and language selector theme for all courses
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Lego @ Sponge</h3>
+                        <p class="font-primary mb-6 text-sm">Developed the landing page and language selector theme for all courses
                             produced by Sponge.
                         </p>
-                        <p class="text-xs"><span
+                        <p class="font-primary text-xs"><span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">NodeJS</span>
@@ -312,15 +312,15 @@ sections.forEach(section => {
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
                     <img :src="NCSC" alt="NCSC" class="w-16 h-16 mb-4">
                     <div>
-                        <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> NCSC @ Sponge</h3>
-                        <p class="mb-6 text-sm">Contributed to the <a href="https://www.ncsc.gov.uk/cyberfirst/overview"
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">💻</span> NCSC @ Sponge</h3>
+                        <p class="font-primary mb-6 text-sm">Contributed to the <a href="https://www.ncsc.gov.uk/cyberfirst/overview"
                                 class="underline hover:text-color-teal">CyberFirst programme</a>, including maintenance
                             and improvements
                             of the <a href="https://www.ncsc.gov.uk/collection/cybersprinters"
                                 class="underline hover:text-color-teal">CyberSrpinters</a> game, and development of <a
                                 href="https://www.ncsc.gov.uk/collection/cyberfirstnavigators"
                                 class="underline hover:text-color-teal">CyberFirst Navigators</a>.</p>
-                        <p class="text-xs"><span
+                        <p class="font-primary text-xs"><span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">NodeJS</span>
@@ -337,8 +337,8 @@ sections.forEach(section => {
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
                     <img :src="DVSA" alt="DVSA" class="w-16 h-16 mb-4">
                     <div>
-                        <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> DVSA @ Sponge</h3>
-                        <p class="mb-6 text-sm">
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">💻</span> DVSA @ Sponge</h3>
+                        <p class="font-primary mb-6 text-sm">
                             Worked on the <a href="https://www.safedrivingforlife.info/">safe driving for life
                                 platform</a>;
                             Implementing multi-learner access for companies, performing maintenance and upgrades,
@@ -354,7 +354,7 @@ sections.forEach(section => {
                                 href="https://www.safedrivingforlife.info/ridefree/"
                                 class="underline hover:text-color-teal transition-all">ridefree</a>.
                         </p>
-                        <p class="text-xs"><span
+                        <p class="font-primary text-xs"><span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">NodeJS</span>
@@ -385,12 +385,12 @@ sections.forEach(section => {
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
                     <img :src="Snap" alt="Snap Inc" class="w-16 h-16 mb-4">
                     <div>
-                        <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">🧑‍🏫</span> Snap Inc @ Sponge
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">🧑‍🏫</span> Snap Inc @ Sponge
                         </h3>
-                        <p class="mb-6 text-sm">Served as a technical consultant for the e-learning material related to
+                        <p class="font-primary mb-6 text-sm">Served as a technical consultant for the e-learning material related to
                             Snaps, Lens Studio
                             software.</p>
-                        <p class="text-xs"><span
+                        <p class="font-primary text-xs"><span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Communication</span>
@@ -404,11 +404,11 @@ sections.forEach(section => {
                     <img :src="AstraZeneca" alt="AstraZeneca"
                         class="w-16 h-16 mb-4">
                     <div>
-                        <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> AstraZeneca @ Sponge
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">💻</span> AstraZeneca @ Sponge
                         </h3>
-                        <p class="mb-6 text-sm">Developed compliance learning modules distributed annually to all
+                        <p class="font-primary mb-6 text-sm">Developed compliance learning modules distributed annually to all
                             employees.</p>
-                        <p class="text-xs"><span
+                        <p class="font-primary text-xs"><span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">VueJS</span>
@@ -423,10 +423,10 @@ sections.forEach(section => {
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
                     <img :src="RedBull" alt="Red Bull" class="w-16 h-16 mb-4">
                     <div>
-                        <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Red Bull @ Sponge
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Red Bull @ Sponge
                         </h3>
-                        <p class="mb-6 text-sm">Updated training materials provided to their retail sales team.</p>
-                        <p class="text-xs"><span
+                        <p class="font-primary mb-6 text-sm">Updated training materials provided to their retail sales team.</p>
+                        <p class="font-primary text-xs"><span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">VueJS</span>
@@ -441,10 +441,10 @@ sections.forEach(section => {
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
                     <img :src="Perkbox" alt="Perkbox" class="w-16 h-16 mb-4">
                     <div>
-                        <h3 class="text-xl font-semibold mb-4"><span class="emjo inline">💻</span> <span
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">💻</span> <span
                                 class="emjo inline">🔧</span> Perkbox @ Rock Mission</h3>
-                        <p class="mb-6 text-sm">Developed an engagement awards platform for top HR professionals.</p>
-                        <p class="text-xs"><span
+                        <p class="font-primary mb-6 text-sm">Developed an engagement awards platform for top HR professionals.</p>
+                        <p class="font-primary text-xs"><span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
                                 class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">PHP</span>
@@ -456,7 +456,7 @@ sections.forEach(section => {
             </div>
             <div class="text-center mt-8">
                 <button id="load-more"
-                    class="hover:animate-bounce-sm px-6 py-3 text-lg font-bold text-color-teal border-2 border-color-off-white bg-color-off-white rounded-md hover:bg-color-teal hover:border-color-teal hover:text-color-off-white shadow-md transition-all"
+                    class="font-secondary hover:animate-bounce-sm px-6 py-3 text-lg font-bold text-color-teal border-2 border-color-off-white bg-color-off-white rounded-md hover:bg-color-teal hover:border-color-teal hover:text-color-off-white shadow-md transition-all"
                     aria-label="Load more projects">
                     Load More
                 </button>
@@ -466,7 +466,7 @@ sections.forEach(section => {
     <!-- Recommendations Section -->
     <section id="testimonials" class="py-16 px-6 md:px-12 bg-color-off-white">
         <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-black text-center">Recommendations</h2>
+            <h2 class="font-secondary text-3xl md:text-4xl font-bold mb-12 text-black text-center">Recommendations</h2>
             <hr
                 class="h-[3px] w-[130px] m-auto mt-[30px] mb-[45px] border-color-off-black text-color-off-black bg-color-off-black" />
             <div class="lg:flex lg:space-x-6 space-y-6 lg:space-y-0 mb-6">
@@ -475,11 +475,11 @@ sections.forEach(section => {
                     class="testimonial-item p-6 bg-color-yellow lg:flex-1 lg:transition-transform lg:transform lg:hover:scale-105 cursor-default">
                     <!-- transform transition duration-700 ease-in-out opacity-0 rotate-y-90 -->
                     <div class="text-base flex flex-col justify-between h-full">
-                        <div class="flex items-start mb-8 pt-5 pl-7 relative">
-                            <p class="absolute top-[-25px] left-[-18px] font-semibold text-8xl"><span
+                        <div class="flex items-start mb-8 pt-5 pl-6 relative">
+                            <p class="font-secondary absolute top-[-25px] left-[-18px] font-semibold text-8xl"><span
                                     class="text-color-red">"</span></p>
                             <div>
-                                <p class="text-color-off-black font-semibold text-2xl">
+                                <p class="font-secondary text-color-off-black font-bold text-2xl">
                                     Excellent communicator with great time management.
                                 </p>
                             </div>
@@ -487,7 +487,7 @@ sections.forEach(section => {
                         <div>
                             <img :src="FemaleProfile" alt=""
                                 class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
-                            <p class="text-color-off-black text-sm text-center">Project Manager</p>
+                            <p class="font-primary text-color-off-black text-sm text-center">Project Manager</p>
                         </div>
                     </div>
                 </div>
@@ -502,12 +502,12 @@ Source: "Jason has outstanding communication skills and excellent approach to ti
                     class="testimonial-item p-6 bg-color-red lg:flex-1 lg:transition-transform lg:transform lg:hover:scale-105 cursor-default">
                     <!-- transform transition duration-700 ease-in-out opacity-0 rotate-y-90 -->
                     <div class="text-base flex flex-col justify-between h-full">
-                        <div class="flex items-start mb-8 pt-5 pl-7 relative">
-                            <p class="absolute top-[-25px] left-[-18px] font-semibold text-8xl"><span
+                        <div class="flex items-start mb-8 pt-5 pl-6 relative">
+                            <p class="font-secondary absolute top-[-25px] left-[-18px] font-semibold text-8xl"><span
                                     class="text-color-yellow">"</span>
                             </p>
                             <div>
-                                <p class="text-color-off-black font-semibold text-2xl">
+                                <p class="font-secondary text-color-off-black font-bold text-2xl">
                                     Dedicated, positive, and always eager to learn.
                                 </p>
                             </div>
@@ -515,7 +515,7 @@ Source: "Jason has outstanding communication skills and excellent approach to ti
                         <div>
                             <img :src="FemaleProfile" alt=""
                                 class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
-                            <p class="text-color-off-black text-sm text-center">Engineering Operations Manager</p>
+                            <p class="font-primary text-color-off-black text-sm text-center">Engineering Operations Manager</p>
                         </div>
                     </div>
                 </div>
@@ -535,11 +535,11 @@ Source: "One of Jason's most admirable traits is his openness to feedback... wel
                     class="testimonial-item p-6 bg-color-yellow lg:flex-1 lg:transition-transform lg:transform lg:hover:scale-105 cursor-default">
                     <!-- transform transition duration-700 ease-in-out opacity-0 rotate-y-90 -->
                     <div class="text-base flex flex-col justify-between h-full">
-                        <div class="flex items-start mb-8 pt-5 pl-7 relative">
-                            <p class="absolute top-[-25px] left-[-18px] font-semibold text-8xl"><span
+                        <div class="flex items-start mb-8 pt-5 pl-6 relative">
+                            <p class="font-secondary absolute top-[-25px] left-[-18px] font-semibold text-8xl"><span
                                     class="text-color-red">"</span></p>
                             <div>
-                                <p class="text-color-off-black font-semibold text-2xl">
+                                <p class="font-secondary text-color-off-black font-bold text-2xl">
                                     A professional, driven individual with great ideas.
                                 </p>
                             </div>
@@ -547,7 +547,7 @@ Source: "One of Jason's most admirable traits is his openness to feedback... wel
                         <div>
                             <img :src="FemaleProfile" alt=""
                                 class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
-                            <p class="text-color-off-black text-sm text-center">Human Resources Generalist</p>
+                            <p class="font-primary text-color-off-black text-sm text-center">Human Resources Generalist</p>
                         </div>
                     </div>
                 </div>
@@ -564,11 +564,11 @@ Source: "Jason is a very professional and driven individual, always eager to lea
                     class="testimonial-item p-6 bg-color-yellow lg:flex-1 lg:transition-transform lg:transform lg:hover:scale-105 cursor-default">
                     <!-- transform transition duration-700 ease-in-out opacity-0 rotate-y-90 -->
                     <div class="text-base flex flex-col justify-between h-full">
-                        <div class="flex items-start mb-8 pt-5 pl-7 relative">
-                            <p class="absolute top-[-25px] left-[-18px] font-semibold text-8xl"><span
+                        <div class="flex items-start mb-8 pt-5 pl-6 relative">
+                            <p class="font-secondary absolute top-[-25px] left-[-18px] font-semibold text-8xl"><span
                                     class="text-color-red">"</span></p>
                             <div>
-                                <p class="text-color-off-black font-semibold text-2xl">
+                                <p class="font-secondary text-color-off-black font-bold text-2xl">
                                     Dependable, creative, and passionate.
                                 </p>
                             </div>
@@ -576,14 +576,14 @@ Source: "Jason is a very professional and driven individual, always eager to lea
                         <div>
                             <img :src="MaleProfile" alt=""
                                 class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
-                            <p class="text-color-off-black text-sm text-center">Senior Software Developer</p>
+                            <p class="font-primary text-color-off-black text-sm text-center">Senior Software Developer</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-12">
                 <a href="https://www.linkedin.com/in/mejasonatkinson/details/recommendations/"
-                    class="text-sm underline hover:text-color-teal transition-all" target="_blank">Read the full
+                    class="font-primary text-sm underline hover:text-color-teal transition-all" target="_blank">Read the full
                     recommendations on my LinkedIn</a>
             </div>
         </div>
@@ -624,8 +624,8 @@ Source: "He has a strong passion for ensuring inclusivity within both the immedi
     <!-- Footer -->
     <footer class="py-8 px-6 md:px-12 bg-color-off-white">
         <div class="max-w-4xl mx-auto text-center opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
-            <p class="text-xs mb-2">&copy; {{ year }} Jason Atkinson. All rights reserved.</p>
-            <p class="text-xs">Designed and developed by Jason Atkinson | <a
+            <p class="font-primary text-xs mb-2">&copy; {{ year }} Jason Atkinson. All rights reserved.</p>
+            <p class="font-primary text-xs">Designed and developed by Jason Atkinson | <a
                     href="https://github.com/mejasonatkinson/project-profile-home-2025" target="_blank"
                     class="text-s underline hover:text-color-teal transition-all">View on GitHub</a></p>
         </div>
