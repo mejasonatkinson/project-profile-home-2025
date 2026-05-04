@@ -27,7 +27,11 @@ import FemaleProfile from '@/assets/images/recommendations/f.png';
 const state = reactive({
     light: true,
     motionReduced: false,
+    reducedMotionWordIndex: 0,
 });
+
+const heroRoles = ["Accessibility Specialist", "Developer", "Designer", "Artist", "Creative Coder", "Problem Solver"];
+
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark');
     localStorage.theme = 'dark';
@@ -62,9 +66,17 @@ const toggleMotion = () => {
         localStorage.motionReduced = 'false';
     }
 }
+
+const showPreviousRole = () => {
+    state.reducedMotionWordIndex = (state.reducedMotionWordIndex - 1 + heroRoles.length) % heroRoles.length;
+}
+
+const showNextRole = () => {
+    state.reducedMotionWordIndex = (state.reducedMotionWordIndex + 1) % heroRoles.length;
+}
+
 let year = new Date().getFullYear();
 onMounted(() => {
-    const words = ["Developer", "Designer", "Artist", "Creative Coder", "Problem Solver"];
     let wordIndex = 0;
     let charIndex = 0;
     let currentWord = '';
@@ -72,8 +84,8 @@ onMounted(() => {
         if (state.motionReduced) return;
         const typingElement = document.getElementById("typing");
         if (!typingElement) return;
-        if (charIndex < words[wordIndex].length) {
-            currentWord += words[wordIndex].charAt(charIndex);
+        if (charIndex < heroRoles[wordIndex].length) {
+            currentWord += heroRoles[wordIndex].charAt(charIndex);
             typingElement.innerHTML = currentWord;
             charIndex++;
             setTimeout(typeWord, 100); // Adjust typing speed here
@@ -91,7 +103,7 @@ onMounted(() => {
             charIndex--;
             setTimeout(deleteWord, 50); // Adjust deleting speed here
         } else {
-            wordIndex = (wordIndex + 1) % words.length;
+            wordIndex = (wordIndex + 1) % heroRoles.length;
             setTimeout(typeWord, 500); // Pause before typing next word
         }
     }
@@ -151,8 +163,8 @@ sections.forEach(section => {
 })
 </script>
 <template>
-    <div class="z-10 fixed top-0 right-0 flex flex-col print:hidden">
-        <span :onclick="lightDarkMode" class="cursor-pointer hover:opacity-75 p-4"
+    <div class="z-10 fixed top-0 right-0 flex flex-col print:hidden" role="toolbar" aria-label="Display settings">
+        <span :onclick="lightDarkMode" class="cursor-pointer hover:opacity-75 p-4 border-l-4 border-color-off-black "
             :class="state.light ? 'bg-color-off-white' : 'bg-color-teal'">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                 class="w-8 h-8 lg:w-14 lg:h-14 text-color-off-black" :class="state.light ? 'inline' : 'hidden'">
@@ -165,51 +177,78 @@ sections.forEach(section => {
                     d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
             </svg>
         </span>
-        <span :onclick="toggleMotion" class="cursor-pointer hover:opacity-75 p-4"
+        <span :onclick="toggleMotion" class="cursor-pointer hover:opacity-75 p-4 border-l-4 border-color-off-black border-b-4"
             :class="state.light ? 'bg-color-off-white' : 'bg-color-teal'"
             :aria-label="state.motionReduced ? 'Enable motion' : 'Reduce motion'"
             role="button">
             <!-- Sparkles: motion is active -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                class="w-8 h-8 lg:w-14 lg:h-14"
-                :class="[state.motionReduced ? 'hidden' : 'inline', state.light ? 'text-color-off-black' : 'text-color-off-white']">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                >
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
-            </svg>
+            </svg> -->
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 lg:w-14 lg:h-14"
+                :class="[state.motionReduced ? 'hidden' : 'inline', state.light ? 'text-color-off-black' : 'text-color-off-white']">
+  <path d="M8 28C16 12 32 36 40 20" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  <line x1="10" y1="10" x2="38" y2="38" stroke="currentColor" stroke-width="3"/>
+</svg>
             <!-- Pause: motion is reduced -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                class="w-8 h-8 lg:w-14 lg:h-14"
-                :class="[state.motionReduced ? 'inline' : 'hidden', state.light ? 'text-color-off-black' : 'text-color-off-white']">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                >
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
-            </svg>
+            </svg> -->
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 lg:w-14 lg:h-14"
+                :class="[state.motionReduced ? 'inline' : 'hidden', state.light ? 'text-color-off-black' : 'text-color-off-white']">
+  <path d="M6 28C10 20 14 20 18 28C22 36 26 36 30 28C34 20 38 20 42 28" 
+        stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+</svg>
         </span>
     </div>
+    <main id="main-content">
     <!-- Hero Section -->
-    <section id="hero" class="relative flex items-center justify-center h-screen bg-color-yellow">
+    <section id="hero" aria-labelledby="hero-heading" class="relative flex items-center justify-center h-screen bg-color-yellow">
         <div class="relative px-6 md:px-12 w-full max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
-            <h1 class="font-secondary text-5xl md:text-6xl lg:text-7xl font-extrabold text-color-off-white mb-8 drop-shadow-md"
+            <h1 id="hero-heading" class="font-secondary text-5xl md:text-6xl lg:text-7xl font-extrabold text-color-off-black mb-8 drop-shadow-md"
                 aria-label="Hey, I'm Jason Atkinson">
                 Hey, <span class="emjo animate-wave inline-block" aria-hidden="true">👋</span> I'm <span
-                    class="text-color-red">Jason
+                    class="text-color-off-black">Jason
                     <span class="hidden xl:inline">Atkinson</span></span>
             </h1>
-            <p class="font-primary text-xl md:text-2xl lg:text-4xl font-bold text-color-teal mb-16 drop-shadow-md"
-                aria-label="Developer, Designer, Artist, Creative Coder, Problem Solver">
+            <p class="font-primary text-xl md:text-2xl lg:text-4xl font-bold text-color-off-black mb-16 drop-shadow-md"
+                aria-label="Accessibility Specialist, Developer, Designer, Artist, Creative Coder, Problem Solver">
                 <template v-if="!state.motionReduced">
                     _____ <span id="typing"></span> <span
-                        class="inline-block w-[4px] h-[40px] bg-color-teal animate-blink align-bottom"> </span>
+                        class="inline-block w-[4px] h-[40px] bg-color-off-black animate-blink align-bottom"> </span>
                 </template>
                 <template v-else>
-                    _____ Developer, Designer, Artist, Creative Coder, Problem Solver
+                    _____ {{ heroRoles[state.reducedMotionWordIndex] }}
+                    <div class="mt-4 flex items-center gap-3">
+                        <button
+                            type="button"
+                            class="font-secondary px-4 py-2 text-base font-bold text-color-off-black border-2 border-color-off-black rounded-md hover:opacity-85 transition-all"
+                            aria-label="Show previous role"
+                            @click="showPreviousRole"
+                        >
+                            Back
+                        </button>
+                        <button
+                            type="button"
+                            class="font-secondary px-4 py-2 text-base font-bold text-color-off-black border-2 border-color-off-black rounded-md hover:opacity-85 transition-all"
+                            aria-label="Show next role"
+                            @click="showNextRole"
+                        >
+                            Next
+                        </button>
+                    </div>
                 </template>
             </p>
             <p class="font-primary text-lg md:text-xl text-color-off-black mb-8">
-                Based in the UK — Exploring the future of technology, design, learning, diversity and creativity.
+                Based in the UK — Exploring what a universal future in technology, design, learning, creativity, and inclusion can be.
             </p>
             <div class="flex gap-8 mb-8">
                 <a href="#about"
-                    class="font-secondary inline-block hover:animate-bounce-sm px-6 py-3 text-lg font-bold text-color-teal border-2 border-color-off-white bg-color-off-white rounded-md hover:bg-color-teal hover:border-color-teal hover:text-color-off-white shadow-md transition-all"
+                    class="font-secondary inline-block hover:animate-bounce-sm px-6 py-3 text-lg font-bold text-color-off-black border-2 border-color-off-white bg-color-off-white rounded-md hover:bg-color-teal hover:border-color-teal hover:text-color-off-white shadow-md transition-all"
                     aria-label="Learn more about me">
                     Learn More
                 </a>
@@ -217,42 +256,54 @@ sections.forEach(section => {
         </div>
     </section>
     <!-- About Section -->
-    <section id="about" class="py-16 px-6 md:px-12 bg-color-red">
+    <section id="about" aria-labelledby="about-heading" class="py-16 px-6 md:px-12 bg-color-red">
         <div class="max-w-6xl mx-auto flex flex-col lg:flex-row opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
             <div
                 class="bg-color-off-white text-color-off-black text-left p-12 lg:flex-1 order-last lg:order-first lg:transition-transform lg:transform cursor-default z-20">
-                <h2 class="font-secondary text-3xl md:text-4xl font-bold mb-6">Who Am I?</h2>
+                <h2 id="about-heading" class="font-secondary text-3xl md:text-4xl font-bold mb-6">Who Am I?</h2>
                 <hr
                     class="h-[3px] w-[130px] mt-[30px] mb-[45px] border-color-off-black text-color-off-black bg-color-off-black" />
-                <p class="font-primary text-sm md:text-sm mb-6">
-                    With over 10 years of experience and nearly 20 years of coding for fun, I’ve developed a robust set
-                    of skills
-                    and
-                    a love for solving problems!
+                <!-- <p class="font-primary text-sm md:text-sm mb-6">
+                    I'm an Accessibility Specialist at Medway Council, where I work to make digital
+                    services inclusive and usable for everyone. With a background in web development and design spanning
+                    over 10 years professionally and nearly 20 years coding for fun, I bring a technical depth to
+                    accessibility that bridges the gap between standards, empathy, and implementation.
                 </p>
                 <p class="font-primary text-sm md:text-sm mb-6">
-                    My expertise spans JavaScript, PHP, and Python, along with various frameworks,
-                    libraries, and more.
+                    My expertise includes WCAG compliance, assistive technology testing, inclusive design, and
+                    accessibility auditing — alongside hands-on development skills in JavaScript, PHP, Python, Vue,
+                    and more.
                 </p>
                 <p class="font-primary text-sm md:text-sm mb-6">
-                    I’m comfortable working in diverse environments—whether it’s in-person, hybrid, or remote. I’ve
-                    contributed to
-                    projects in various industries, including <span class="emjo inline">🏥</span> Medical, <span
+                    I've contributed to projects across <span class="emjo inline">🏥</span> Medical, <span
                         class="emjo inline">📈</span> Marketing, <span class="emjo inline">🛡️</span> InsurTech, <span
                         class="emjo inline">📅</span> Reservation, <span class="emjo inline">🏢</span>
                     Co-working, <span class="emjo inline-block">🛒</span> E-commerce, <span
                         class="emjo inline">📚</span>
-                    eLearning, and the <span class="emjo inline">🏛️</span> Public Sector. My experience
-                    covers
-                    companies at
-                    different stages, from startups and early years to growth and established enterprises.
+                    eLearning, and the <span class="emjo inline">🏛️</span> Public Sector — at every stage from
+                    startups to established enterprises.
                 </p>
                 <p class="font-primary text-sm md:text-sm mb-6">
-                    Collaboration is key to my work. I’ve teamed up with stakeholders, founders, marketers, designers,
-                    SEO and
-                    social media specialists, learning experts, and fellow developers. My natural curiosity drives me to
-                    continuously learn and grow. <span class="emjo inline">🌱</span>
-                </p>
+                    Collaboration is central to everything I do. I'm as comfortable running accessibility workshops and
+                    reviews as I am writing code, and I've worked alongside stakeholders, founders, marketers,
+                    designers, SEO specialists, learning experts, and fellow developers. My natural curiosity means I'm
+                    always learning and growing. <span class="emjo inline">🌱</span>
+                </p> -->
+<p class="font-primary mb-6">
+I’m an Accessibility Specialist at Medway Council, focused on making digital services inclusive, usable, and compliant for everyone.
+</p>
+<p class="font-primary mb-6">
+With 10+ years in web development and over 20 years coding for fun, I bring a mix of technical depth and empathy, bridging the gap between accessibility standards and real-world implementation.
+</p>    
+<p class="font-primary mb-6">
+My work includes running workshops, audits, and accessibility reviews, shaping strategy, supporting remediation, and helping teams understand assistive technology, inclusive design, and WCAG.
+</p>
+<p class="font-primary mb-6">
+I’ve worked across sectors including healthcare, e-commerce, eLearning, and the public sector, using technologies like JavaScript, PHP, and Python.
+</p>
+<p class="font-primary mb-6">
+I’m not actively looking for new roles, but I’m always open to conversations around accessibility and inclusive design.
+</p>
             </div>
             <div class="bg-color-teal p-6 lg:flex-1 relative order-first lg:order-last h-[500px] lg:h-auto z-10">
                 <img :src="Me" alt="Profile Image Of Jason Atkinson"
@@ -261,49 +312,50 @@ sections.forEach(section => {
         </div>
     </section>
     <!-- Services Section -->
-    <section id="services" class="py-16 px-6 md:px-12 bg-color-off-white">
+    <section id="services" aria-labelledby="services-heading" class="py-16 px-6 md:px-12 bg-color-off-white">
         <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
-            <h2 class="font-secondary text-3xl md:text-4xl font-bold mb-12 text-center text-color-off-black">Services</h2>
+            <h2 id="services-heading" class="font-secondary text-3xl md:text-4xl font-bold mb-12 text-center text-color-off-black">Services</h2>
             <hr
                 class="h-[3px] w-[130px] m-auto mt-[30px] mb-[45px] border-color-off-black text-color-off-black bg-color-off-black">
             <div class="mb-12">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Accessibility Consulting Section -->
+                    <div
+                        class="p-6 bg-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
+                        <div class="emjo text-5xl md:text-6xl lg:text-7xl mb-12 text-center">♿</div>
+                        <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Accessibility Consulting</h3>
+                        <p class="font-primary text-center">Helping teams meet WCAG standards through audits, remediation guidance, assistive technology testing, and inclusive design reviews.</p>
+                    </div>
                     <!-- Development Section -->
                     <div
                         class="p-6 bg-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
                         <div class="emjo text-5xl md:text-6xl lg:text-7xl mb-12 text-center">💻</div>
-                        <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Development</h3>
-                        <p class="font-primary text-sm md:text-sm text-center">Creating responsive and user-friendly web pages with
-                            clean code
-                            and seamless UI/UX enhancements.</p>
+                        <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Accessible Development</h3>
+                        <p class="font-primary text-center">Building and improving websites with accessibility baked in—clean, semantic code, performance, and usable interfaces from the ground up.</p>
                     </div>
                     <!-- Fullstack Development Section -->
                     <div
                         class="p-6 bg-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
                         <div class="emjo text-5xl md:text-6xl lg:text-7xl mb-12 text-center">🔧</div>
-                        <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Fullstack Development
+                        <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Technical Implementation
                         </h3>
-                        <p class="font-primary text-sm md:text-sm text-center">Building robust backend systems with secure
-                            authentication,
-                            database management, and seamless fullstack integration.</p>
+                        <p class="font-primary text-center">Supporting teams with remediation, frontend/backend integration, and turning accessibility requirements into working solutions.</p>
                     </div>
                     <!-- Design Section -->
                     <div
                         class="p-6 bg-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
                         <div class="emjo text-5xl md:text-6xl lg:text-7xl mb-12 text-center">🎨</div>
-                        <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Design</h3>
-                        <p class="font-primary text-sm md:text-sm text-center">Crafting beautiful and functional designs tailored to
-                            meet your
-                            needs and enhance user experience.</p>
+                        <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Inclusive Design Support</h3>
+                        <p class="font-primary text-center">Reviewing and guiding design decisions to ensure experiences are usable, accessible, and consistent across all users.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Projects -->
-    <section id="projects" class="py-16 px-6 md:px-12 bg-color-off-black">
+    <section id="projects" aria-labelledby="projects-heading" class="py-16 px-6 md:px-12 bg-color-off-black">
         <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
-            <h2 class="font-secondary text-3xl md:text-4xl font-bold mb-6 text-center text-color-off-white">Projects I've worked on
+            <h2 id="projects-heading" class="font-secondary text-3xl md:text-4xl font-bold mb-6 text-center text-color-off-white">Projects I've worked on
             </h2>
             <hr
                 class="h-[3px] w-[130px] m-auto mt-[30px] mb-[45px] border-color-off-white text-color-off-white bg-color-off-white" />
@@ -312,10 +364,26 @@ sections.forEach(section => {
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
                     <img :src="Medway" alt="Medway" class="w-16 h-16 mb-4 bg-white">
                     <div>
-                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Empathy Lab @ Medway</h3>
-                        <p class="font-primary mb-6 text-sm">Filler text for the project description.</p>
-                        <p class="font-primary text-xs"><span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Example</span>
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">🧭</span> Strategy @ Medway</h3>
+                        <p class="font-primary mb-6 text-sm">Led the design of Medway Council’s digital accessibility and inclusion strategy, working across teams to define structure, roles, and a long-term approach to accessible services.</p>
+                        <p class="font-primary text-xs">
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">User Research</span>
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Public Sector</span>
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Strategy</span>
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Team Design</span>
+                        </p>
+                    </div>
+                </div>
+                                <div
+                    class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
+                    <img :src="Medway" alt="Medway" class="w-16 h-16 mb-4 bg-white">
+                    <div>
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">📜</span> Policy @ Medway</h3>
+                        <p class="font-primary mb-6 text-sm">Improved and expanded internal accessibility policies to better support compliance, consistency, and inclusive delivery across the organisation.</p>
+                        <p class="font-primary text-xs">
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Accessibility</span>
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Policy</span>
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Public Sector</span>
                         </p>
                     </div>
                 </div>
@@ -323,13 +391,33 @@ sections.forEach(section => {
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
                     <img :src="Medway" alt="Medway" class="w-16 h-16 mb-4 bg-white">
                     <div>
-                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Toolkit @ Medway</h3>
-                        <p class="font-primary mb-6 text-sm">Filler text for the project description.</p>
-                        <p class="font-primary text-xs"><span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Example</span>
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">🧪</span> Empathy Lab @ Medway</h3>
+                        <p class="font-primary mb-6 text-sm">Designed and facilitated guided “Empathy Lab” sessions to help teams understand accessibility barriers through structured, hands-on experiences—while clearly framing the limits of simulation vs lived experience.</p>
+                        <p class="font-primary text-xs">
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Accessibility</span>
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Assistive Technology</span>
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Inclusive Design</span>
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Workshops</span>
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Public Sector</span>
                         </p>
                     </div>
                 </div>
+                <div
+                    class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
+                    <img :src="Medway" alt="Medway" class="w-16 h-16 mb-4 bg-white">
+                    <div>
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">🧰</span> Toolkit @ Medway</h3>
+                        <p class="font-primary mb-6 text-sm">Created a practical accessibility toolkit enabling teams to deliver accessible content independently, covering WCAG, assistive tech, documents, and inclusive communication.</p>
+                        <p class="font-primary text-xs">
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">WCAG</span>
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Documentation</span>
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Training</span>
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Accessibility</span>
+                            <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Public Sector</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- EmergeOne -->
                 <div
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
                     <img :src="Meta" alt="Meta" class="w-16 h-16 mb-4 bg-white">
@@ -545,9 +633,9 @@ sections.forEach(section => {
         </div>
     </section>
     <!-- Recommendations Section -->
-    <section id="testimonials" class="py-16 px-6 md:px-12 bg-color-off-white">
+    <section id="testimonials" aria-labelledby="testimonials-heading" class="py-16 px-6 md:px-12 bg-color-off-white">
         <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
-            <h2 class="font-secondary text-3xl md:text-4xl font-bold mb-12 text-black text-center">Recommendations</h2>
+            <h2 id="testimonials-heading" class="font-secondary text-3xl md:text-4xl font-bold mb-12 text-black text-center">Recommendations</h2>
             <hr
                 class="h-[3px] w-[130px] m-auto mt-[30px] mb-[45px] border-color-off-black text-color-off-black bg-color-off-black" />
             <div class="lg:flex lg:space-x-6 space-y-6 lg:space-y-0 mb-6">
@@ -681,7 +769,7 @@ Source: "He has a strong passion for ensuring inclusivity within both the immedi
     </section>
     <!-- Contact Section -->
     <!-- Social Media Section -->
-    <section id="contact" class="py-16 px-6 md:px-12 bg-color-teal">
+    <section id="contact" aria-label="Contact" class="py-16 px-6 md:px-12 bg-color-teal">
         <div class="max-w-6xl mx-auto text-center opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
             <div class="flex justify-center gap-8">
                 <ul class="flex space-x-6">
@@ -702,6 +790,7 @@ Source: "He has a strong passion for ensuring inclusivity within both the immedi
             </div>
         </div>
     </section>
+    </main>
     <!-- Footer -->
     <footer class="py-8 px-6 md:px-12 bg-color-off-white">
         <div class="max-w-4xl mx-auto text-center opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
