@@ -12,7 +12,7 @@ import Lego from '@/assets/images/company-logos/Lego.png';
 import Meta from '@/assets/images/company-logos/Meta.png';
 import NCSC from '@/assets/images/company-logos/NCSC.jpg';
 
-import Medway from '@/assets/images/company-logos/Medway.png';
+import Medway from '@/assets/images/company-logos/medway.png';
 
 import Perkbox from '@/assets/images/company-logos/Perkbox.png';
 import RedBull from '@/assets/images/company-logos/redbull.jpg';
