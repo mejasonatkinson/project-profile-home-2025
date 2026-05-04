@@ -33,6 +33,15 @@ html {
   scroll-behavior: smooth;
 }
 
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
 .dark {
   --color-off-white: #F5F5F5;
   --color-off-black: #1E1E1E;

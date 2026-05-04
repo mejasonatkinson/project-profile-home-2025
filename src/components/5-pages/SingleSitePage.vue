@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, watch, nextTick } from 'vue';
 import { reactive } from 'vue';
 
 import Me from '@/assets/images/me/me.png';
@@ -11,6 +11,8 @@ import Google from '@/assets/images/company-logos/google.jpg';
 import Lego from '@/assets/images/company-logos/Lego.png';
 import Meta from '@/assets/images/company-logos/Meta.png';
 import NCSC from '@/assets/images/company-logos/NCSC.jpg';
+
+import Medway from '@/assets/images/company-logos/Medway.png';
 
 import Perkbox from '@/assets/images/company-logos/Perkbox.png';
 import RedBull from '@/assets/images/company-logos/redbull.jpg';
@@ -24,6 +26,7 @@ import FemaleProfile from '@/assets/images/recommendations/f.png';
 
 const state = reactive({
     light: true,
+    motionReduced: false,
 });
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark');
@@ -33,6 +36,11 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
     document.documentElement.classList.remove('dark');
     localStorage.theme = 'light'
     state.light = true;
+}
+if (localStorage.motionReduced === 'true' || (!('motionReduced' in localStorage) && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+    document.documentElement.classList.add('reduce-motion');
+    localStorage.motionReduced = 'true';
+    state.motionReduced = true;
 }
 const lightDarkMode = () => {
     state.light = !state.light;
@@ -44,14 +52,26 @@ const lightDarkMode = () => {
         localStorage.theme = 'dark';
     }
 }
+const toggleMotion = () => {
+    state.motionReduced = !state.motionReduced;
+    if (state.motionReduced) {
+        document.documentElement.classList.add('reduce-motion');
+        localStorage.motionReduced = 'true';
+    } else {
+        document.documentElement.classList.remove('reduce-motion');
+        localStorage.motionReduced = 'false';
+    }
+}
 let year = new Date().getFullYear();
 onMounted(() => {
     const words = ["Developer", "Designer", "Artist", "Creative Coder", "Problem Solver"];
     let wordIndex = 0;
     let charIndex = 0;
     let currentWord = '';
-    const typingElement = document.getElementById("typing");
     function typeWord() {
+        if (state.motionReduced) return;
+        const typingElement = document.getElementById("typing");
+        if (!typingElement) return;
         if (charIndex < words[wordIndex].length) {
             currentWord += words[wordIndex].charAt(charIndex);
             typingElement.innerHTML = currentWord;
@@ -62,6 +82,9 @@ onMounted(() => {
         }
     }
     function deleteWord() {
+        if (state.motionReduced) return;
+        const typingElement = document.getElementById("typing");
+        if (!typingElement) return;
         if (charIndex > 0) {
             currentWord = currentWord.slice(0, -1);
             typingElement.innerHTML = currentWord;
@@ -72,8 +95,18 @@ onMounted(() => {
             setTimeout(typeWord, 500); // Pause before typing next word
         }
     }
-    // Start the typing effect
-    typeWord();
+    // Start the typing effect (skip if motion is already reduced)
+    if (!state.motionReduced) typeWord();
+    // Restart typing when motion is re-enabled
+    watch(() => state.motionReduced, async (reduced) => {
+        if (!reduced) {
+            wordIndex = 0;
+            charIndex = 0;
+            currentWord = '';
+            await nextTick();
+            typeWord();
+        }
+    });
     const projects = document.querySelectorAll('.project-item');
     const loadMoreButton = document.getElementById('load-more');
     let visibleProjects = 3;
@@ -118,19 +151,40 @@ sections.forEach(section => {
 })
 </script>
 <template>
-    <span :onclick="lightDarkMode" class="z-10 fixed top-0 right-0 cursor-pointer hover:opacity-75 p-4 print:hidden"
-        :class="state.light ? 'bg-color-off-white' : 'bg-color-teal'">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            class="w-8 h-8 lg:w-14 lg:h-14 text-color-off-black" :class="state.light ? 'inline' : 'hidden'">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            class="w-8 h-8 lg:w-14 lg:h-14 text-color-off-white" :class="state.light ? 'hidden' : 'inline'">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-        </svg>
-    </span>
+    <div class="z-10 fixed top-0 right-0 flex flex-col print:hidden">
+        <span :onclick="lightDarkMode" class="cursor-pointer hover:opacity-75 p-4"
+            :class="state.light ? 'bg-color-off-white' : 'bg-color-teal'">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="w-8 h-8 lg:w-14 lg:h-14 text-color-off-black" :class="state.light ? 'inline' : 'hidden'">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="w-8 h-8 lg:w-14 lg:h-14 text-color-off-white" :class="state.light ? 'hidden' : 'inline'">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+            </svg>
+        </span>
+        <span :onclick="toggleMotion" class="cursor-pointer hover:opacity-75 p-4"
+            :class="state.light ? 'bg-color-off-white' : 'bg-color-teal'"
+            :aria-label="state.motionReduced ? 'Enable motion' : 'Reduce motion'"
+            role="button">
+            <!-- Sparkles: motion is active -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="w-8 h-8 lg:w-14 lg:h-14"
+                :class="[state.motionReduced ? 'hidden' : 'inline', state.light ? 'text-color-off-black' : 'text-color-off-white']">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
+            </svg>
+            <!-- Pause: motion is reduced -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="w-8 h-8 lg:w-14 lg:h-14"
+                :class="[state.motionReduced ? 'inline' : 'hidden', state.light ? 'text-color-off-black' : 'text-color-off-white']">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+            </svg>
+        </span>
+    </div>
     <!-- Hero Section -->
     <section id="hero" class="relative flex items-center justify-center h-screen bg-color-yellow">
         <div class="relative px-6 md:px-12 w-full max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
@@ -142,8 +196,13 @@ sections.forEach(section => {
             </h1>
             <p class="font-primary text-xl md:text-2xl lg:text-4xl font-bold text-color-teal mb-16 drop-shadow-md"
                 aria-label="Developer, Designer, Artist, Creative Coder, Problem Solver">
-                _____ <span id="typing"></span> <span
-                    class="inline-block w-[4px] h-[40px] bg-color-teal animate-blink align-bottom"> </span>
+                <template v-if="!state.motionReduced">
+                    _____ <span id="typing"></span> <span
+                        class="inline-block w-[4px] h-[40px] bg-color-teal animate-blink align-bottom"> </span>
+                </template>
+                <template v-else>
+                    _____ Developer, Designer, Artist, Creative Coder, Problem Solver
+                </template>
             </p>
             <p class="font-primary text-lg md:text-xl text-color-off-black mb-8">
                 Based in the UK — Exploring the future of technology, design, learning, diversity and creativity.
@@ -251,19 +310,41 @@ sections.forEach(section => {
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div
                     class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
+                    <img :src="Medway" alt="Medway" class="w-16 h-16 mb-4 bg-white">
+                    <div>
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Empathy Lab @ Medway</h3>
+                        <p class="font-primary mb-6 text-sm">Filler text for the project description.</p>
+                        <p class="font-primary text-xs"><span
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Example</span>
+                        </p>
+                    </div>
+                </div>
+                <div
+                    class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
+                    <img :src="Medway" alt="Medway" class="w-16 h-16 mb-4 bg-white">
+                    <div>
+                        <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Toolkit @ Medway</h3>
+                        <p class="font-primary mb-6 text-sm">Filler text for the project description.</p>
+                        <p class="font-primary text-xs"><span
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Example</span>
+                        </p>
+                    </div>
+                </div>
+                <div
+                    class="project-item p-6 bg-color-off-white relative lg:transition-transform lg:transform lg:hover:scale-105 cursor-default ">
                     <img :src="Meta" alt="Meta" class="w-16 h-16 mb-4 bg-white">
                     <div>
                         <h3 class="font-secondary text-xl font-semibold mb-4"><span class="emjo inline">💻</span> Meta @ Sponge</h3>
                         <p class="font-primary mb-6 text-sm">Worked on the frontend for their e-learning material targeted at
                             developers.</p>
                         <p class="font-primary text-xs"><span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">VueJS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">CSS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Sass</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                         </p>
                     </div>
                 </div>
@@ -275,15 +356,15 @@ sections.forEach(section => {
                         <p class="font-primary mb-6 text-sm">Built the landing page and language selector theme for all courses
                             produced by Sponge.</p>
                         <p class="font-primary text-xs"><span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">NodeJS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">NodeJS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">VueJS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">CSS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Sass</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                         </p>
                     </div>
                 </div>
@@ -296,15 +377,15 @@ sections.forEach(section => {
                             produced by Sponge.
                         </p>
                         <p class="font-primary text-xs"><span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">NodeJS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">NodeJS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">VueJS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">CSS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Sass</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                         </p>
                     </div>
                 </div>
@@ -321,15 +402,15 @@ sections.forEach(section => {
                                 href="https://www.ncsc.gov.uk/collection/cyberfirstnavigators"
                                 class="underline hover:text-color-teal">CyberFirst Navigators</a>.</p>
                         <p class="font-primary text-xs"><span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">NodeJS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">NodeJS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">StencilJS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">StencilJS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">CSS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Sass</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                         </p>
                     </div>
                 </div>
@@ -355,29 +436,29 @@ sections.forEach(section => {
                                 class="underline hover:text-color-teal transition-all">ridefree</a>.
                         </p>
                         <p class="font-primary text-xs"><span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">NodeJS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">NodeJS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">VueJS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">CSS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Sass</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Python</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Python</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Django</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Django</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Wagtail
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Wagtail
                                 CMS</span> <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Docker</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Docker</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">GitHub
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">GitHub
                                 Actions</span> <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Google
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Google
                                 Cloud</span> <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Agile</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Agile</span>
                         </p>
                     </div>
                 </div>
@@ -391,11 +472,11 @@ sections.forEach(section => {
                             Snaps, Lens Studio
                             software.</p>
                         <p class="font-primary text-xs"><span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Communication</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Communication</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Collaboration</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Collaboration</span>
                         </p>
                     </div>
                 </div>
@@ -409,13 +490,13 @@ sections.forEach(section => {
                         <p class="font-primary mb-6 text-sm">Developed compliance learning modules distributed annually to all
                             employees.</p>
                         <p class="font-primary text-xs"><span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">VueJS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">CSS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Sass</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                         </p>
                     </div>
                 </div>
@@ -427,13 +508,13 @@ sections.forEach(section => {
                         </h3>
                         <p class="font-primary mb-6 text-sm">Updated training materials provided to their retail sales team.</p>
                         <p class="font-primary text-xs"><span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">VueJS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">CSS</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">Sass</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                         </p>
                     </div>
                 </div>
@@ -445,11 +526,11 @@ sections.forEach(section => {
                                 class="emjo inline">🔧</span> Perkbox @ Rock Mission</h3>
                         <p class="font-primary mb-6 text-sm">Developed an engagement awards platform for top HR professionals.</p>
                         <p class="font-primary text-xs"><span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">JavaScript</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">PHP</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">PHP</span>
                             <span
-                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-yellow px-2 py-1 rounded mr-2">WordPress</span>
+                                class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">WordPress</span>
                         </p>
                     </div>
                 </div>
