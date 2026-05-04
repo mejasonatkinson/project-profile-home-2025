@@ -55,3 +55,37 @@ To start the development server, run:
 ```sh
 npm run dev
 ```
+
+## Storybook (Component Library)
+
+Storybook is set up alongside the website so you can build and review UI components in isolation.
+
+### Start Storybook
+
+```sh
+npm run storybook
+```
+
+Storybook runs at:
+
+```text
+http://localhost:6006
+```
+
+### Build Static Storybook
+
+```sh
+npm run build-storybook
+```
+
+### Story Location Convention
+
+No components or stories have been added yet.
+
+When you are ready, add story files under `src` using this naming pattern:
+
+- `*.stories.ts`
+- `*.stories.tsx`
+- `*.stories.js`
+- `*.stories.jsx`
+- `*.mdx`
