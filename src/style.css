@@ -56,6 +56,10 @@ html {
 .dark #hero {
   --color-yellow: #1E1E1E;
   --color-off-black: #A9A9A9;
+  /* --color-off-white: #A9A9A9; */
+}
+.dark #hero a {
+  --color-off-black: #1E1E1E;
   --color-off-white: #A9A9A9;
 }
 
@@ -66,7 +70,7 @@ html {
 
 .dark #services {
   --color-off-white: #A9A9A9;
-  --color-off-black: #A9A9A9;
+  --color-off-black: #1E1E1E;
   --color-yellow: #1E1E1E;
 }
 
@@ -85,7 +89,7 @@ html {
 }
 
 .dark #testimonials .testimonial-item {
-  --color-off-black: #A9A9A9;
+  --color-off-black: #1E1E1E;
 }
 
 .dark #contact {

@@ -321,21 +321,21 @@ I’m not actively looking for new roles, but I’m always open to conversations
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Accessibility Consulting Section -->
                     <div
-                        class="p-6 bg-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
+                        class="p-6 border-4 border-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
                         <div class="emjo text-5xl md:text-6xl lg:text-7xl mb-12 text-center">♿</div>
                         <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Accessibility Consulting</h3>
                         <p class="font-primary text-center">Helping teams meet WCAG standards through audits, remediation guidance, assistive technology testing, and inclusive design reviews.</p>
                     </div>
                     <!-- Development Section -->
                     <div
-                        class="p-6 bg-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
+                        class="p-6 border-4 border-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
                         <div class="emjo text-5xl md:text-6xl lg:text-7xl mb-12 text-center">💻</div>
                         <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Accessible Development</h3>
                         <p class="font-primary text-center">Building and improving websites with accessibility baked in—clean, semantic code, performance, and usable interfaces from the ground up.</p>
                     </div>
                     <!-- Fullstack Development Section -->
                     <div
-                        class="p-6 bg-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
+                        class="p-6 border-4 border-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
                         <div class="emjo text-5xl md:text-6xl lg:text-7xl mb-12 text-center">🔧</div>
                         <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Technical Implementation
                         </h3>
@@ -343,7 +343,7 @@ I’m not actively looking for new roles, but I’m always open to conversations
                     </div>
                     <!-- Design Section -->
                     <div
-                        class="p-6 bg-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
+                        class="p-6 border-4 border-color-yellow text-color-off-black transition-transform transform hover:scale-105 cursor-default py-12">
                         <div class="emjo text-5xl md:text-6xl lg:text-7xl mb-12 text-center">🎨</div>
                         <h3 class="font-secondary text-2xl font-semibold text-color-off-black mb-4 text-center">Inclusive Design Support</h3>
                         <p class="font-primary text-center">Reviewing and guiding design decisions to ensure experiences are usable, accessible, and consistent across all users.</p>
@@ -641,7 +641,7 @@ I’m not actively looking for new roles, but I’m always open to conversations
             <div class="lg:flex lg:space-x-6 space-y-6 lg:space-y-0 mb-6">
                 <!-- 1 -->
                 <div
-                    class="testimonial-item p-6 bg-color-yellow lg:flex-1 lg:transition-transform lg:transform lg:hover:scale-105 cursor-default">
+                    class="testimonial-item p-6 border-4 border-color-yellow lg:flex-1 lg:transition-transform lg:transform lg:hover:scale-105 cursor-default">
                     <!-- transform transition duration-700 ease-in-out opacity-0 rotate-y-90 -->
                     <div class="text-base flex flex-col justify-between h-full">
                         <div class="flex items-start mb-8 pt-5 pl-6 relative">
@@ -656,7 +656,7 @@ I’m not actively looking for new roles, but I’m always open to conversations
                         <div>
                             <img :src="FemaleProfile" alt=""
                                 class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
-                            <p class="font-primary text-color-off-black text-sm text-center">Project Manager</p>
+                            <p class="font-primary text-color-off-black text-center">Project Manager</p>
                         </div>
                     </div>
                 </div>
@@ -668,7 +668,7 @@ Source: "Jason has outstanding communication skills and excellent approach to ti
 -->
                 <!-- 2 -->
                 <div
-                    class="testimonial-item p-6 bg-color-red lg:flex-1 lg:transition-transform lg:transform lg:hover:scale-105 cursor-default">
+                    class="testimonial-item p-6 border-4 border-color-red lg:flex-1 lg:transition-transform lg:transform lg:hover:scale-105 cursor-default">
                     <!-- transform transition duration-700 ease-in-out opacity-0 rotate-y-90 -->
                     <div class="text-base flex flex-col justify-between h-full">
                         <div class="flex items-start mb-8 pt-5 pl-6 relative">
@@ -684,7 +684,7 @@ Source: "Jason has outstanding communication skills and excellent approach to ti
                         <div>
                             <img :src="FemaleProfile" alt=""
                                 class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
-                            <p class="font-primary text-color-off-black text-sm text-center">Engineering Operations Manager</p>
+                            <p class="font-primary text-color-off-black text-center"><!--Engineering--> Operations Manager</p>
                         </div>
                     </div>
                 </div>
@@ -701,7 +701,7 @@ Source: "One of Jason's most admirable traits is his openness to feedback... wel
 
                 <!-- 3 -->
                 <div
-                    class="testimonial-item p-6 bg-color-yellow lg:flex-1 lg:transition-transform lg:transform lg:hover:scale-105 cursor-default">
+                    class="testimonial-item p-6 border-4 border-color-yellow lg:flex-1 lg:transition-transform lg:transform lg:hover:scale-105 cursor-default">
                     <!-- transform transition duration-700 ease-in-out opacity-0 rotate-y-90 -->
                     <div class="text-base flex flex-col justify-between h-full">
                         <div class="flex items-start mb-8 pt-5 pl-6 relative">
@@ -716,7 +716,7 @@ Source: "One of Jason's most admirable traits is his openness to feedback... wel
                         <div>
                             <img :src="FemaleProfile" alt=""
                                 class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
-                            <p class="font-primary text-color-off-black text-sm text-center">Human Resources Generalist</p>
+                            <p class="font-primary text-color-off-black text-center">Human Resources Generalist</p>
                         </div>
                     </div>
                 </div>
@@ -730,7 +730,7 @@ Source: "Jason is a very professional and driven individual, always eager to lea
 -->
                 <!-- 4 -->
                 <div
-                    class="testimonial-item p-6 bg-color-yellow lg:flex-1 lg:transition-transform lg:transform lg:hover:scale-105 cursor-default">
+                    class="testimonial-item p-6 border-4 border-color-yellow lg:flex-1 lg:transition-transform lg:transform lg:hover:scale-105 cursor-default">
                     <!-- transform transition duration-700 ease-in-out opacity-0 rotate-y-90 -->
                     <div class="text-base flex flex-col justify-between h-full">
                         <div class="flex items-start mb-8 pt-5 pl-6 relative">
@@ -745,14 +745,14 @@ Source: "Jason is a very professional and driven individual, always eager to lea
                         <div>
                             <img :src="MaleProfile" alt=""
                                 class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
-                            <p class="font-primary text-color-off-black text-sm text-center">Senior Software Developer</p>
+                            <p class="font-primary text-color-off-black text-center">Senior Software Developer</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-12">
                 <a href="https://www.linkedin.com/in/mejasonatkinson/details/recommendations/"
-                    class="font-primary text-sm underline hover:text-color-teal transition-all" target="_blank">Read the full
+                    class="font-primary underline hover:text-color-teal transition-all" target="_blank">Read the full
                     recommendations on my LinkedIn</a>
             </div>
         </div>
@@ -794,10 +794,10 @@ Source: "He has a strong passion for ensuring inclusivity within both the immedi
     <!-- Footer -->
     <footer class="py-8 px-6 md:px-12 bg-color-off-white">
         <div class="max-w-4xl mx-auto text-center opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
-            <p class="font-primary text-xs mb-2">&copy; {{ year }} Jason Atkinson. All rights reserved.</p>
-            <p class="font-primary text-xs">Designed and developed by Jason Atkinson | <a
+            <p class="font-primary mb-2">&copy; {{ year }} Jason Atkinson. All rights reserved.</p>
+            <p class="font-primary">Designed and developed by Jason Atkinson | <a
                     href="https://github.com/mejasonatkinson/project-profile-home-2025" target="_blank"
-                    class="text-s underline hover:text-color-teal transition-all">View on GitHub</a></p>
+                    class="underline hover:text-color-teal transition-all">View on GitHub</a></p>
         </div>
     </footer>
 </template>
