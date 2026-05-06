@@ -2,13 +2,14 @@
 defineProps({
     light: Boolean,
     motionReduced: Boolean,
+    content: Object,
 });
 
 const emit = defineEmits(['toggle-theme', 'toggle-motion']);
 </script>
 
 <template>
-    <div class="z-10 fixed top-0 right-0 flex flex-col print:hidden" role="toolbar" aria-label="Display settings">
+    <div class="z-10 fixed top-0 right-0 flex flex-col print:hidden" role="toolbar" :aria-label="content.ariaLabel">
         <span :onclick="() => emit('toggle-theme')" class="cursor-pointer hover:opacity-75 p-4 border-l-4 border-color-off-black"
             :class="light ? 'bg-color-off-white' : 'bg-color-teal'">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -24,7 +25,7 @@ const emit = defineEmits(['toggle-theme', 'toggle-motion']);
         </span>
         <span :onclick="() => emit('toggle-motion')" class="cursor-pointer hover:opacity-75 p-4 border-l-4 border-color-off-black border-b-4"
             :class="light ? 'bg-color-off-white' : 'bg-color-teal'"
-            :aria-label="motionReduced ? 'Enable motion' : 'Reduce motion'"
+            :aria-label="motionReduced ? content.enableMotionLabel : content.reduceMotionLabel"
             role="button">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 lg:w-14 lg:h-14"
                 :class="[motionReduced ? 'hidden' : 'inline', light ? 'text-color-off-black' : 'text-color-off-white']">

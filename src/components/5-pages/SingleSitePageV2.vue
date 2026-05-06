@@ -9,6 +9,7 @@ import ProjectsTemplate from '@/components/4-templates/ProjectsTemplate.vue';
 import RecommendationsTemplate from '@/components/4-templates/RecommendationsTemplate.vue';
 import ContactTemplate from '@/components/4-templates/ContactTemplate.vue';
 import FooterTemplate from '@/components/4-templates/FooterTemplate.vue';
+import { siteContent } from '@/content/siteContent';
 
 const state = reactive({
     light: true,
@@ -16,7 +17,7 @@ const state = reactive({
     reducedMotionWordIndex: 0,
 });
 
-const heroRoles = ["Accessibility Specialist", "Developer", "Designer", "Artist", "Creative Coder", "Problem Solver"];
+const year = new Date().getFullYear();
 
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark');
@@ -57,11 +58,11 @@ const toggleMotion = () => {
 };
 
 const showPreviousRole = () => {
-    state.reducedMotionWordIndex = (state.reducedMotionWordIndex - 1 + heroRoles.length) % heroRoles.length;
+    state.reducedMotionWordIndex = (state.reducedMotionWordIndex - 1 + siteContent.hero.roles.length) % siteContent.hero.roles.length;
 };
 
 const showNextRole = () => {
-    state.reducedMotionWordIndex = (state.reducedMotionWordIndex + 1) % heroRoles.length;
+    state.reducedMotionWordIndex = (state.reducedMotionWordIndex + 1) % siteContent.hero.roles.length;
 };
 
 onMounted(() => {
@@ -90,6 +91,7 @@ onMounted(() => {
     <AccessibilityToolbarTemplate
         :light="state.light"
         :motionReduced="state.motionReduced"
+        :content="siteContent.toolbar"
         @toggle-theme="lightDarkMode"
         @toggle-motion="toggleMotion"
     />
@@ -97,15 +99,15 @@ onMounted(() => {
         <HeroTemplate
             :motionReduced="state.motionReduced"
             :reducedMotionWordIndex="state.reducedMotionWordIndex"
-            :heroRoles="heroRoles"
+            :content="siteContent.hero"
             @show-previous-role="showPreviousRole"
             @show-next-role="showNextRole"
         />
-        <AboutTemplate />
-        <ServicesTemplate />
-        <ProjectsTemplate />
-        <RecommendationsTemplate />
-        <ContactTemplate />
+        <AboutTemplate :content="siteContent.about" />
+        <ServicesTemplate :content="siteContent.services" />
+        <ProjectsTemplate :content="siteContent.projects" />
+        <RecommendationsTemplate :content="siteContent.recommendations" />
+        <ContactTemplate :content="siteContent.contact" />
     </main>
-    <FooterTemplate />
+    <FooterTemplate :content="siteContent.footer" :year="year" />
 </template>
