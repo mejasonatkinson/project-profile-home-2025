@@ -4,24 +4,19 @@ This is the main landing page for my personal website. It’s a simple, one-page
 
 **URL:** [https://jasonatkinson.co.uk/](https://jasonatkinson.co.uk/)
 
-**Technologies Used:** Vue 3, TypeScript, Vite, TailwindCSS
 
-**Plans:** I plan to introduce more sections to the landing page and link to additional micro-sites.
+
+
+
+
 
 1. Complete Storybook Component Stories
 
 You have the color story and a11y addon set up, but no individual component stories yet. Since you're an accessibility consultant/developer, a complete Storybook showcasing your atoms, molecules, and organisms with WCAG checks is a direct, linkable portfolio artifact — it shows your craft rather than just claiming it.
 
-2. Skills Section
-
-Your site is polished with projects, services, testimonials, and bio — but no explicit Skills section. This is one of the first things recruiters and hiring managers scan for. It's a self-contained addition using your existing siteContent.ts + component pattern.
-
-3. Contact Form
-
-The Contact section currently only has social link icons. A form reduces friction for hiring managers who don't want to leave the page. You can connect it to a free service (Formspree, Netlify Forms, or EmailJS) without a backend — aligns with the Contact Form (Section || Page) item already in your README plans.
+- [ ] Setup basic layout
 
 - [ ] Readout loud feature (api)
-- [ ] Update About image (Quality - Look - Feel)
 - [ ] About (Page)
 - [ ] Easter Eggs (Section): Just for fun! (But keeping it accessible)
 - [ ] Services (Micro Site)

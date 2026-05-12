@@ -8,6 +8,16 @@
   </head>
   <body>
     <div id="app"></div>
+
+    <!-- Static fallback form so Netlify can detect this form in SPA builds -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

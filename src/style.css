@@ -33,6 +33,24 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Strong, high-contrast focus indicator for keyboard navigation */
+:where(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 3px solid #0A84FF;
+  outline-offset: 6px;
+  box-shadow: 0 0 0 3px #ffffff, 0 0 0 8px #0A84FF;
+}
+
+/* Keep toolbar focus rings visible and separate when controls are stacked */
+[role="toolbar"] button {
+  position: relative;
+}
+
+[role="toolbar"] button:focus-visible {
+  z-index: 20;
+  outline-offset: 6px;
+  box-shadow: 0 0 0 3px #ffffff, 0 0 0 8px #0A84FF;
+}
+
 .reduce-motion *,
 .reduce-motion *::before,
 .reduce-motion *::after {
@@ -102,4 +120,299 @@ html {
 
 .dark img, .dark .emjo {
   filter: brightness(0.7);
+}
+
+/* Read-aloud accessibility feature */
+.read-aloud-word {
+  transition: all 0.1s ease-in-out;
+  display: inline;
+}
+
+.read-aloud-word[style*="background-color: rgb(10, 132, 255)"],
+.read-aloud-word[style*="background-color: #0A84FF"] {
+  font-weight: 600;
+}
+
+.hero-roles-print {
+  display: none;
+}
+
+/* Keep recommendation cards equal height in each row */
+#testimonials .lg\:flex {
+  align-items: stretch;
+}
+
+#testimonials .testimonial-item {
+  display: flex;
+}
+
+#testimonials .testimonial-item > .text-base {
+  width: 100%;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 12mm;
+}
+
+@media print {
+  html,
+  body {
+    font-size: 9.5pt;
+    line-height: 1.35;
+    color: #111;
+    background: #fff;
+  }
+
+  main section {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  /* In print preview, intersection observers may not run for off-screen sections.
+     Force reveal of fade-in content so later sections are visible. */
+  [data-section],
+  .opacity-0,
+  .animate-fadein {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  footer {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    background-image: none !important;
+  }
+
+  main section,
+  footer {
+    padding-top: 0.55rem !important;
+    padding-bottom: 0.55rem !important;
+    padding-left: 0.35rem !important;
+    padding-right: 0.35rem !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  hr {
+    margin-top: 0.35rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  #hero {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .hero-roles-print {
+    display: inline !important;
+  }
+
+  .hero-roles-screen {
+    display: none !important;
+  }
+
+  #hero > div {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #about > div {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+  }
+
+  #about > div > :first-child {
+    order: 2 !important;
+  }
+
+  #about > div > :last-child {
+    order: 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    width: 300px !important;
+    height: 300px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    overflow: hidden !important;
+  }
+
+  #about > div > :last-child img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  #services .grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.6rem !important;
+  }
+
+  #projects .grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.6rem !important;
+  }
+
+  #skills .grid {
+    display: grid !important;
+    grid-template-columns: 1fr 2fr !important;
+    gap: 0.6rem !important;
+  }
+
+  #skills hr {
+    margin-bottom: 0.9rem !important;
+  }
+
+  #testimonials .testimonial-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 0.55rem !important;
+  }
+
+  #testimonials .lg\:flex {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: 1fr !important;
+    gap: 0.6rem !important;
+  }
+
+  #social ul {
+    gap: 0.35rem !important;
+  }
+
+  #social a {
+    font-size: 1rem !important;
+    padding: 0.35rem !important;
+  }
+
+  /* Hero: plain text links for print */
+  #hero a {
+    border: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    color: #000 !important;
+    text-decoration: underline !important;
+    box-shadow: none !important;
+  }
+
+  #hero button[aria-label="Show previous role"],
+  #hero button[aria-label="Show next role"] {
+    border: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    color: #000 !important;
+    text-decoration: underline !important;
+    box-shadow: none !important;
+  }
+
+  /* Who I am: image left, remove horizontal content padding */
+  #about > div > :last-child {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+
+  #about > div > :first-child {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* What I do: remove borders and force black text */
+  #services .grid > div {
+    border: 0 !important;
+    color: #000 !important;
+  }
+
+  #services h2,
+  #services h3,
+  #services p,
+  #services .emjo {
+    color: #000 !important;
+  }
+
+  /* Projects: always print all cards */
+  #projects .project-item.hidden,
+  #projects .hidden.project-item {
+    display: block !important;
+  }
+
+  /* Areas of focus: remove borders and make all text/labels black */
+  #skills aside,
+  #skills article,
+  #skills span,
+  #skills p,
+  #skills h2,
+  #skills h3 {
+    border: 0 !important;
+    color: #000 !important;
+  }
+
+  #skills .tag {
+    color: #000 !important;
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+  /* Recommendations: remove borders and decorative quote marks */
+  #testimonials .testimonial-item {
+    border: 0 !important;
+  }
+
+  #testimonials .text-8xl {
+    display: none !important;
+  }
+
+  /* Get in touch / social / footer: black text, no shadow on form */
+  #contact,
+  #contact h2,
+  #contact p,
+  #contact label,
+  #contact input,
+  #contact textarea,
+  #contact button,
+  #social,
+  #social h2,
+  #social a,
+  footer,
+  footer p,
+  footer a {
+    color: #000 !important;
+  }
+
+  #contact form,
+  #contact .max-w-2xl {
+    box-shadow: none !important;
+  }
+
+  #contact form button[type="submit"],
+  #contact button[type="submit"] {
+    box-shadow: none !important;
+    border-color: #000 !important;
+  }
+
+  #contact input,
+  #contact textarea {
+    border-color: #000 !important;
+  }
+
+  #load-more,
+  [role="toolbar"],
+  #theme-toggle-tooltip,
+  #motion-toggle-tooltip,
+  #read-aloud-tooltip {
+    display: none !important;
+  }
 }
