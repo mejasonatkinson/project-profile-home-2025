@@ -7,6 +7,14 @@ This is the main landing page for my personal website. It’s a simple, one-page
 
 
 
+- [ ] Certifications and Awards (Section)
+- [ ] Workshops & Talks (Section)
+- [ ] Newsletter Sign Up (Section)
+- [ ] Open Source Contributions (Section)
+- [ ] Community Involvement (Section)
+- [ ] Personal Projects (Section)
+- [ ] Download Resume (Section)
+
 
 
 
@@ -16,23 +24,12 @@ You have the color story and a11y addon set up, but no individual component stor
 
 - [ ] Setup basic layout
 
-- [ ] Readout loud feature (api)
+
 - [ ] About (Page)
 - [ ] Easter Eggs (Section): Just for fun! (But keeping it accessible)
-- [ ] Services (Micro Site)
-- [ ] Projects (Micro Site)
-- [ ] Blog (Micro Site)
-- [ ] Blog (Section)
-- [ ] Certifications and Awards (Section)
-- [ ] Workshops & Talks (Section)
-- [ ] Open Source Contributions (Section)
-- [ ] Community Involvement (Section)
-- [ ] Personal Projects (Section)
-- [ ] Art Sketchbook
-- [ ] Add Instagram
-- [ ] Download Resume (Section)
-- [ ] Frequently Asked Questions (Section)
-- [ ] Newsletter Sign Up (Section)
+
+
+
 
 ## Recommended Setup
 
