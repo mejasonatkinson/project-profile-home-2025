@@ -117,75 +117,81 @@ const getContrastRatio = (foreground, background) => {
     return (lighter + 0.05) / (darker + 0.05);
 };
 
-const extractWordsFromPage = () => {
+const unwrapReadAloudSpans = () => {
     const main = document.getElementById('main-content');
-    if (!main) return [];
+    if (!main) return;
 
-    // Clone the main content to manipulate without affecting the DOM
-    const clone = main.cloneNode(true);
-    
-    // Remove script tags and non-display elements
-    const scripts = clone.querySelectorAll('script, style, [aria-hidden="true"]');
-    scripts.forEach(s => s.remove());
+    const existingSpans = main.querySelectorAll('span.read-aloud-word');
+    existingSpans.forEach((span) => {
+        span.replaceWith(document.createTextNode(span.textContent || ''));
+    });
+};
 
-    // Get all text nodes
+const getReadableTextNodes = (root) => {
     const walker = document.createTreeWalker(
-        clone,
+        root,
         NodeFilter.SHOW_TEXT,
-        null,
-        false
+        {
+            acceptNode(node) {
+                if (!node.textContent || node.textContent.trim().length === 0) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+
+                const parent = node.parentElement;
+                if (!parent || parent.closest('script, style, noscript, [aria-hidden="true"]')) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+
+                return NodeFilter.FILTER_ACCEPT;
+            },
+        }
     );
 
-    let words = [];
+    const textNodes = [];
     let node;
     while (node = walker.nextNode()) {
-        const text = node.textContent.trim();
-        if (text.length > 0) {
-            const nodeWords = text.split(/\s+/);
-            words.push(...nodeWords);
-        }
+        textNodes.push(node);
     }
 
-    return words.filter(w => w.length > 0);
+    return textNodes;
 };
 
 const wrapWordsInSpans = () => {
-    allWords = extractWordsFromPage();
+    unwrapReadAloudSpans();
+
     wordSpans = [];
+    allWords = [];
     const main = document.getElementById('main-content');
     
     if (!main) return;
 
-    const walker = document.createTreeWalker(
-        main,
-        NodeFilter.SHOW_TEXT,
-        null,
-        false
-    );
+    const textNodes = getReadableTextNodes(main);
 
-    let node;
     let wordCounter = 0;
-    while (node = walker.nextNode()) {
-        const words = node.textContent.split(/(\s+)/);
-        const parent = node.parentNode;
+    textNodes.forEach((textNode) => {
+        const words = textNode.textContent.split(/(\s+)/);
+        const parent = textNode.parentNode;
+        if (!parent) return;
+
         const fragment = document.createDocumentFragment();
 
-        words.forEach((word, index) => {
-            if (word.match(/\s+/)) {
+        words.forEach((word) => {
+            if (/\s+/.test(word)) {
                 fragment.appendChild(document.createTextNode(word));
             } else if (word.length > 0) {
                 const span = document.createElement('span');
                 span.className = 'read-aloud-word';
-                span.dataset.wordIndex = wordCounter;
+                span.dataset.wordIndex = String(wordCounter);
                 span.textContent = word;
                 fragment.appendChild(span);
                 wordSpans[wordCounter] = span;
+                allWords[wordCounter] = word;
                 wordCounter++;
             }
         });
 
-        parent.replaceChild(fragment, node);
-    }
+        parent.replaceChild(fragment, textNode);
+    });
 };
 
 const highlightWord = (index) => {
@@ -209,8 +215,11 @@ const toggleReadAloud = () => {
     state.readAloud = !state.readAloud;
 
     if (state.readAloud) {
+        // Ensure any previous speech session is fully reset before starting.
+        speechSynthesis.cancel();
+        speechSynthesisUtterance = null;
+
         wrapWordsInSpans();
-        allWords = extractWordsFromPage();
         
         if (allWords.length === 0) {
             state.readAloud = false;
@@ -239,25 +248,28 @@ const toggleReadAloud = () => {
             // Create utterance for current word
             const utterance = new SpeechSynthesisUtterance(allWords[currentIndex]);
             utterance.rate = 1.2;
+            speechSynthesisUtterance = utterance;
 
             utterance.onend = () => {
+                if (!state.readAloud) return;
                 currentIndex++;
                 // Speak next word after current finishes
                 speakWord();
             };
 
             utterance.onerror = () => {
+                if (!state.readAloud) return;
                 currentIndex++;
                 speakWord();
             };
 
-            speechSynthesis.cancel();
             speechSynthesis.speak(utterance);
         };
 
         speakWord();
     } else {
         speechSynthesis.cancel();
+        speechSynthesisUtterance = null;
         wordSpans.forEach(span => {
             span.style.backgroundColor = '';
             span.style.color = '';
