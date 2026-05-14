@@ -7,16 +7,6 @@ This is the main landing page for my personal website. It’s a simple, one-page
 
 
 
-- [ ] Certifications and Awards (Section)
-- [ ] Workshops & Talks (Section)
-- [ ] Newsletter Sign Up (Section)
-- [ ] Open Source Contributions (Section)
-- [ ] Community Involvement (Section)
-- [ ] Personal Projects (Section)
-- [ ] Download Resume (Section)
-
-
-
 
 1. Complete Storybook Component Stories
 

@@ -40,6 +40,7 @@ let wordSpans = [];
 
 const heroRoles = ["Accessibility Specialist", "Developer", "Designer", "Artist", "Creative Coder", "Problem Solver"];
 const profileImage = computed(() => (state.light ? LightMe : DarkMe));
+const resumeUrl = '/resume.pdf';
 
 // Toggle toolbar buttons on/off from one place.
 const toolbarButtonToggles = {
@@ -47,6 +48,27 @@ const toolbarButtonToggles = {
     motion: true,
     readAloud: false,
 };
+
+// Toggle page sections on/off from one place.
+const sectionToggles = {
+    hero: true,
+    about: true,
+    services: true,
+    projects: true,
+    skills: false,
+    testimonials: true,
+    resume: false,
+    certifications: false,
+    workshopsTalks: false,
+    newsletter: false,
+    openSource: false,
+    community: false,
+    personalProjects: false,
+    contact: false,
+    social: true,
+};
+
+const isSectionVisible = (sectionKey) => sectionToggles[sectionKey];
 
 const enabledToolbarButtons = computed(() => {
     const buttonOrder = ['themeMode', 'motion', 'readAloud'];
@@ -455,7 +477,7 @@ onMounted(() => {
     </div>
     <main id="main-content">
         <!-- Hero Section -->
-        <section id="hero" aria-labelledby="hero-heading"
+        <section v-if="isSectionVisible('hero')" id="hero" aria-labelledby="hero-heading"
             class="relative flex items-center justify-center h-screen bg-color-yellow">
             <div class="relative px-6 md:px-12 w-full max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out"
                 data-section>
@@ -504,7 +526,7 @@ onMounted(() => {
             </div>
         </section>
         <!-- About Section -->
-        <section id="about" aria-labelledby="about-heading" class="py-16 px-6 md:px-12 bg-color-red">
+        <section v-if="isSectionVisible('about')" id="about" aria-labelledby="about-heading" class="py-16 px-6 md:px-12 bg-color-red">
             <div class="max-w-6xl mx-auto flex flex-col lg:flex-row opacity-0 transition-opacity duration-1000 ease-in-out"
                 data-section>
                 <div
@@ -576,7 +598,7 @@ onMounted(() => {
             </div>
         </section>
         <!-- Services Section -->
-        <section id="services" aria-labelledby="services-heading" class="py-16 px-6 md:px-12 bg-color-off-white">
+        <section v-if="isSectionVisible('services')" id="services" aria-labelledby="services-heading" class="py-16 px-6 md:px-12 bg-color-off-white">
             <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
                 <h2 id="services-heading"
                     class="font-secondary text-3xl md:text-4xl font-bold mb-12 text-center text-color-off-black">
@@ -644,7 +666,7 @@ onMounted(() => {
             </div>
         </section>
         <!-- Projects -->
-        <section id="projects" aria-labelledby="projects-heading" class="py-16 px-6 md:px-12 bg-color-off-black">
+        <section v-if="isSectionVisible('projects')" id="projects" aria-labelledby="projects-heading" class="py-16 px-6 md:px-12 bg-color-off-black">
             <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
                 <h2 id="projects-heading"
                     class="font-secondary text-3xl md:text-4xl font-bold mb-6 text-center text-color-off-white">Projects
@@ -1003,7 +1025,7 @@ onMounted(() => {
             </div>
         </section>
         <!-- Skills Section -->
-        <section id="skills" aria-labelledby="skills-heading" class="py-16 px-6 md:px-12 bg-color-yellow">
+        <section v-if="isSectionVisible('skills')" id="skills" aria-labelledby="skills-heading" class="py-16 px-6 md:px-12 bg-color-yellow">
             <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
                 <h2 id="skills-heading"
                     class="font-secondary text-3xl md:text-4xl font-bold mb-12 text-center text-color-off-black">
@@ -1170,7 +1192,7 @@ onMounted(() => {
       
         </section>
         <!-- Recommendations Section -->
-        <section id="testimonials" aria-labelledby="testimonials-heading"
+        <section v-if="isSectionVisible('testimonials')" id="testimonials" aria-labelledby="testimonials-heading"
             class="py-16 px-6 md:px-12 bg-color-off-white">
             <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
                 <h2 id="testimonials-heading"
@@ -1306,8 +1328,324 @@ Source: "I was also hugely impressed with Jason’s presentation skills when att
 Source: "He has a strong passion for ensuring inclusivity within both the immediate and wider teams."    
 -->
         </section>
+        <!-- Resume Section -->
+        <section v-if="isSectionVisible('resume')" id="resume" aria-labelledby="resume-heading" class="py-16 px-6 md:px-12 bg-color-teal">
+            <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
+                <h2 id="resume-heading"
+                    class="font-secondary text-3xl md:text-4xl font-bold mb-6 text-center text-color-off-white">
+                    Resume
+                </h2>
+                <hr
+                    class="h-[3px] w-[130px] m-auto mt-[30px] mb-[45px] border-color-off-white text-color-off-white bg-color-off-white" />
+
+                <div class="max-w-3xl mx-auto border-4 border-color-off-white bg-color-off-black p-8 md:p-10 text-center">
+                    <p class="font-primary text-color-off-white text-lg mb-8">
+                        Download my latest resume for an overview of my experience, accessibility work, and technical skills.
+                    </p>
+
+                    <a :href="resumeUrl" download
+                        class="font-secondary inline-block hover:animate-bounce-sm px-6 py-3 text-lg font-bold text-color-off-black border-2 border-color-yellow bg-color-yellow rounded-md hover:bg-color-off-white hover:border-color-off-white shadow-md transition-all"
+                        aria-label="Download my resume as a PDF">
+                        Download Resume (PDF)
+                    </a>
+
+                    <p class="font-primary text-color-off-white text-sm mt-5">
+                        File path: /public/resume.pdf
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Certifications and Awards Section -->
+        <section v-if="isSectionVisible('certifications')" id="certifications" aria-labelledby="certifications-heading" class="py-16 px-6 md:px-12 bg-color-yellow">
+            <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
+                <h2 id="certifications-heading"
+                    class="font-secondary text-3xl md:text-4xl font-bold mb-6 text-center text-color-off-black">
+                    Certifications & Awards
+                </h2>
+                <hr
+                    class="h-[3px] w-[130px] m-auto mt-[30px] mb-[45px] border-color-off-black text-color-off-black bg-color-off-black" />
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <article class="border-4 border-color-off-black bg-color-off-white p-6 lg:transition-transform lg:transform lg:hover:translate-x-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-red mb-2">CERTIFICATION</p>
+                        <h3 class="font-secondary text-2xl text-color-off-black mb-3">CPACC (IAAP)</h3>
+                        <p class="font-primary text-color-off-black mb-4">
+                            Certified Professional in Accessibility Core Competencies covering disability, accessibility standards, and inclusive practice fundamentals.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-black">Issued by: International Association of Accessibility Professionals</p>
+                    </article>
+
+                    <article class="border-4 border-color-off-black bg-color-red p-6 lg:transition-transform lg:transform lg:hover:translate-x-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-yellow mb-2">AWARD</p>
+                        <h3 class="font-secondary text-2xl text-color-off-white mb-3">Accessibility Champion Recognition</h3>
+                        <p class="font-primary text-color-off-white mb-4">
+                            Recognized for driving accessibility improvements through policy, practical guidance, and cross-team collaboration.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-white">Context: Public sector digital services</p>
+                    </article>
+
+                    <article class="border-4 border-color-off-black bg-color-off-black p-6 md:col-span-2">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-yellow mb-2">IN PROGRESS</p>
+                        <h3 class="font-secondary text-2xl text-color-off-white mb-3">Continuous Professional Development</h3>
+                        <p class="font-primary text-color-off-white">
+                            Ongoing learning in accessibility auditing, assistive technology testing, and inclusive design delivery through workshops, mentorship, and applied project work.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- Workshops and Talks Section -->
+        <section v-if="isSectionVisible('workshopsTalks')" id="workshops-talks" aria-labelledby="workshops-talks-heading" class="py-16 px-6 md:px-12 bg-color-off-black">
+            <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
+                <h2 id="workshops-talks-heading"
+                    class="font-secondary text-3xl md:text-4xl font-bold mb-6 text-center text-color-off-white">
+                    Workshops & Talks
+                </h2>
+                <hr
+                    class="h-[3px] w-[130px] m-auto mt-[30px] mb-[45px] border-color-off-white text-color-off-white bg-color-off-white" />
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <article class="border-4 border-color-off-white bg-color-off-white p-6 lg:transition-transform lg:transform lg:hover:-translate-y-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-red mb-2">WORKSHOP</p>
+                        <h3 class="font-secondary text-2xl text-color-off-black mb-3">Accessibility Empathy Lab</h3>
+                        <p class="font-primary text-color-off-black mb-4">
+                            Facilitated practical sessions to help teams experience barriers, discuss impact, and convert insight into delivery actions.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-black">Audience: Cross-functional product and service teams</p>
+                    </article>
+
+                    <article class="border-4 border-color-teal bg-color-teal p-6 lg:transition-transform lg:transform lg:hover:-translate-y-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-off-white mb-2">TALK</p>
+                        <h3 class="font-secondary text-2xl text-color-off-white mb-3">From Policy to Practice</h3>
+                        <p class="font-primary text-color-off-white mb-4">
+                            Shared practical approaches for turning accessibility policies into consistent, measurable work across delivery teams.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-white">Theme: Governance, standards, and implementation</p>
+                    </article>
+
+                    <article class="border-4 border-color-yellow bg-color-yellow p-6 lg:transition-transform lg:transform lg:hover:-translate-y-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-off-black mb-2">SESSION</p>
+                        <h3 class="font-secondary text-2xl text-color-off-black mb-3">Assistive Technology in Real Workflows</h3>
+                        <p class="font-primary text-color-off-black mb-4">
+                            Demonstrated how screen readers, keyboard navigation, and zoom expose issues early and improve quality outcomes.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-black">Focus: Testing methods teams can adopt immediately</p>
+                    </article>
+                </div>
+
+                <div class="text-center mt-10">
+                    <a href="#contact"
+                        class="font-secondary inline-block hover:animate-bounce-sm px-6 py-3 text-lg font-bold text-color-off-black border-2 border-color-off-white bg-color-off-white rounded-md hover:bg-color-yellow hover:border-color-yellow shadow-md transition-all"
+                        aria-label="Contact me about workshops and talks">
+                        Invite Me To Speak
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Newsletter Section -->
+        <section v-if="isSectionVisible('newsletter')" id="newsletter" aria-labelledby="newsletter-heading" class="py-16 px-6 md:px-12 bg-color-off-white">
+            <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
+                <h2 id="newsletter-heading"
+                    class="font-secondary text-3xl md:text-4xl font-bold mb-6 text-center text-color-off-black">
+                    Newsletter Sign Up
+                </h2>
+                <hr
+                    class="h-[3px] w-[130px] m-auto mt-[30px] mb-[45px] border-color-off-black text-color-off-black bg-color-off-black" />
+
+                <div class="max-w-3xl mx-auto border-4 border-color-off-black bg-color-yellow p-6 md:p-8">
+                    <p class="font-primary text-color-off-black text-center mb-8">
+                        Get occasional updates on accessibility practice, inclusive design notes, and practical front-end guidance.
+                    </p>
+
+                    <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+                        action="/#newsletter" class="space-y-5" aria-describedby="newsletter-help">
+                        <input type="hidden" name="form-name" value="newsletter" />
+                        <p class="hidden">
+                            <label>
+                                Do not fill this field if you are human:
+                                <input name="bot-field" />
+                            </label>
+                        </p>
+
+                        <p id="newsletter-help" class="font-primary text-sm text-color-off-black">
+                            Enter your details below. You can unsubscribe at any time.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="newsletter-name" class="block font-secondary text-color-off-black font-semibold mb-2">Name</label>
+                                <input id="newsletter-name" name="name" type="text" autocomplete="name"
+                                    class="w-full border-2 border-color-off-black px-4 py-3 font-primary text-color-off-black bg-color-off-white focus:outline-none" />
+                            </div>
+                            <div>
+                                <label for="newsletter-email" class="block font-secondary text-color-off-black font-semibold mb-2">Email <span aria-label="required">*</span></label>
+                                <input id="newsletter-email" name="email" type="email" required autocomplete="email"
+                                    class="w-full border-2 border-color-off-black px-4 py-3 font-primary text-color-off-black bg-color-off-white focus:outline-none" />
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <input id="newsletter-consent" name="consent" type="checkbox" required
+                                class="mt-1 h-5 w-5 border-2 border-color-off-black accent-color-off-black" />
+                            <label for="newsletter-consent" class="font-primary text-sm text-color-off-black">
+                                I agree to receive newsletter emails. I understand I can unsubscribe at any time.
+                            </label>
+                        </div>
+
+                        <button type="submit"
+                            class="font-secondary w-full md:w-auto px-6 py-3 text-lg font-bold text-color-off-white border-2 border-color-off-black bg-color-off-black rounded-md hover:bg-color-teal hover:border-color-teal transition-all">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- Open Source Contributions Section -->
+        <section v-if="isSectionVisible('openSource')" id="open-source" aria-labelledby="open-source-heading" class="py-16 px-6 md:px-12 bg-color-teal">
+            <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
+                <h2 id="open-source-heading"
+                    class="font-secondary text-3xl md:text-4xl font-bold mb-6 text-center text-color-off-white">
+                    Open Source Contributions
+                </h2>
+                <hr
+                    class="h-[3px] w-[130px] m-auto mt-[30px] mb-[45px] border-color-off-white text-color-off-white bg-color-off-white" />
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="border-4 border-color-off-white bg-color-off-white p-6 lg:transition-transform lg:transform lg:hover:-translate-y-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-red mb-2">ACCESSIBILITY</p>
+                        <h3 class="font-secondary text-2xl text-color-off-black mb-3">Issue Triage and Fixes</h3>
+                        <p class="font-primary text-color-off-black mb-4">
+                            Reviewing accessibility-related issues, reproducing defects, and proposing practical front-end fixes with clear implementation notes.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-black">Includes: keyboard support, semantics, focus behavior</p>
+                    </article>
+
+                    <article class="border-4 border-color-off-black bg-color-yellow p-6 lg:transition-transform lg:transform lg:hover:-translate-y-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-off-black mb-2">DOCUMENTATION</p>
+                        <h3 class="font-secondary text-2xl text-color-off-black mb-3">Guidance and Examples</h3>
+                        <p class="font-primary text-color-off-black mb-4">
+                            Contributing usage notes and implementation examples to help teams adopt accessible patterns with less guesswork.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-black">Focus: practical docs that support delivery</p>
+                    </article>
+
+                    <article class="border-4 border-color-off-white bg-color-off-black p-6 lg:transition-transform lg:transform lg:hover:-translate-y-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-yellow mb-2">COMMUNITY</p>
+                        <h3 class="font-secondary text-2xl text-color-off-white mb-3">Pull Requests and Reviews</h3>
+                        <p class="font-primary text-color-off-white mb-4">
+                            Opening pull requests, reviewing community contributions, and collaborating on code quality and inclusive experience improvements.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-white">Approach: constructive, test-led, and user-centred</p>
+                    </article>
+                </div>
+
+                <div class="text-center mt-10">
+                    <a href="https://github.com/mejasonatkinson/" target="_blank" rel="noopener noreferrer"
+                        class="font-secondary inline-block hover:animate-bounce-sm px-6 py-3 text-lg font-bold text-color-off-black border-2 border-color-off-white bg-color-off-white rounded-md hover:bg-color-yellow hover:border-color-yellow shadow-md transition-all"
+                        aria-label="View my open source work on GitHub">
+                        View Contributions on GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Community Involvement Section -->
+        <section v-if="isSectionVisible('community')" id="community" aria-labelledby="community-heading" class="py-16 px-6 md:px-12 bg-color-yellow">
+            <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
+                <h2 id="community-heading"
+                    class="font-secondary text-3xl md:text-4xl font-bold mb-6 text-center text-color-off-black">
+                    Community Involvement
+                </h2>
+                <hr
+                    class="h-[3px] w-[130px] m-auto mt-[30px] mb-[45px] border-color-off-black text-color-off-black bg-color-off-black" />
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="border-4 border-color-off-black bg-color-off-white p-6 lg:transition-transform lg:transform lg:hover:-translate-y-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-red mb-2">MENTORING</p>
+                        <h3 class="font-secondary text-2xl text-color-off-black mb-3">Supporting Teams and Individuals</h3>
+                        <p class="font-primary text-color-off-black mb-4">
+                            Helping designers, developers, and content authors build confidence with accessibility through practical guidance and review.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-black">Format: 1-2-1 sessions, pairing, and feedback loops</p>
+                    </article>
+
+                    <article class="border-4 border-color-off-black bg-color-red p-6 lg:transition-transform lg:transform lg:hover:-translate-y-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-yellow mb-2">COMMUNITY</p>
+                        <h3 class="font-secondary text-2xl text-color-off-white mb-3">Knowledge Sharing</h3>
+                        <p class="font-primary text-color-off-white mb-4">
+                            Sharing useful accessibility findings, implementation tips, and inclusive design approaches with the wider community.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-white">Focus: practical examples over theory-only advice</p>
+                    </article>
+
+                    <article class="border-4 border-color-off-black bg-color-off-black p-6 lg:transition-transform lg:transform lg:hover:-translate-y-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-yellow mb-2">ADVOCACY</p>
+                        <h3 class="font-secondary text-2xl text-color-off-white mb-3">Inclusive Digital Culture</h3>
+                        <p class="font-primary text-color-off-white mb-4">
+                            Promoting accessibility as a shared responsibility by encouraging better habits, standards, and collaboration across disciplines.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-white">Goal: make inclusion part of everyday delivery</p>
+                    </article>
+                </div>
+
+                <div class="text-center mt-10">
+                    <a href="#newsletter"
+                        class="font-secondary inline-block hover:animate-bounce-sm px-6 py-3 text-lg font-bold text-color-off-white border-2 border-color-off-black bg-color-off-black rounded-md hover:bg-color-teal hover:border-color-teal shadow-md transition-all"
+                        aria-label="Sign up for updates on community work">
+                        Follow My Community Updates
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Personal Projects Section -->
+        <section v-if="isSectionVisible('personalProjects')" id="personal-projects" aria-labelledby="personal-projects-heading" class="py-16 px-6 md:px-12 bg-color-off-black">
+            <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
+                <h2 id="personal-projects-heading"
+                    class="font-secondary text-3xl md:text-4xl font-bold mb-6 text-center text-color-off-white">
+                    Personal Projects
+                </h2>
+                <hr
+                    class="h-[3px] w-[130px] m-auto mt-[30px] mb-[45px] border-color-off-white text-color-off-white bg-color-off-white" />
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="border-4 border-color-off-white bg-color-off-white p-6 lg:transition-transform lg:transform lg:hover:-translate-y-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-red mb-2">EXPERIMENT</p>
+                        <h3 class="font-secondary text-2xl text-color-off-black mb-3">Accessible UI Pattern Lab</h3>
+                        <p class="font-primary text-color-off-black mb-4">
+                            A sandbox for building and testing accessible interface patterns, including keyboard-first interactions and robust focus states.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-black">Stack: Vue, TypeScript, Storybook</p>
+                    </article>
+
+                    <article class="border-4 border-color-teal bg-color-teal p-6 lg:transition-transform lg:transform lg:hover:-translate-y-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-off-white mb-2">TOOLING</p>
+                        <h3 class="font-secondary text-2xl text-color-off-white mb-3">Accessibility Audit Starter Kit</h3>
+                        <p class="font-primary text-color-off-white mb-4">
+                            A practical toolkit for lightweight audits and remediation planning to help teams move quickly from findings to fixes.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-white">Focus: process templates and repeatable checks</p>
+                    </article>
+
+                    <article class="border-4 border-color-yellow bg-color-yellow p-6 lg:transition-transform lg:transform lg:hover:-translate-y-1">
+                        <p class="font-secondary text-sm tracking-[0.12em] text-color-off-black mb-2">CREATIVE</p>
+                        <h3 class="font-secondary text-2xl text-color-off-black mb-3">Creative Coding Accessibility Demos</h3>
+                        <p class="font-primary text-color-off-black mb-4">
+                            Interactive demos exploring how animation, media, and playful UI can stay expressive while respecting accessibility preferences.
+                        </p>
+                        <p class="font-primary text-sm text-color-off-black">Includes: reduced motion and contrast-aware variants</p>
+                    </article>
+                </div>
+
+                <div class="text-center mt-10">
+                    <a href="https://github.com/mejasonatkinson/" target="_blank" rel="noopener noreferrer"
+                        class="font-secondary inline-block hover:animate-bounce-sm px-6 py-3 text-lg font-bold text-color-off-black border-2 border-color-off-white bg-color-off-white rounded-md hover:bg-color-yellow hover:border-color-yellow shadow-md transition-all"
+                        aria-label="Browse my personal projects on GitHub">
+                        Browse Personal Projects
+                    </a>
+                </div>
+            </div>
+        </section>
         <!-- Contact Form Section -->
-        <section id="contact" aria-labelledby="contact-heading" class="py-16 px-6 md:px-12 bg-color-red">
+        <section v-if="isSectionVisible('contact')" id="contact" aria-labelledby="contact-heading" class="py-16 px-6 md:px-12 bg-color-red">
             <div class="max-w-6xl mx-auto opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
                 <h2 id="contact-heading"
                     class="font-secondary text-3xl md:text-4xl font-bold mb-6 text-center text-color-off-white">
@@ -1370,7 +1708,7 @@ Source: "He has a strong passion for ensuring inclusivity within both the immedi
         </section>
 
         <!-- Social Media Section -->
-        <section id="social" aria-labelledby="social-heading" class="py-16 px-6 md:px-12 bg-color-teal">
+        <section v-if="isSectionVisible('social')" id="social" aria-labelledby="social-heading" class="py-16 px-6 md:px-12 bg-color-teal">
             <div class="max-w-6xl mx-auto text-center opacity-0 transition-opacity duration-1000 ease-in-out" data-section>
                 <h2 id="social-heading" class="font-secondary text-3xl md:text-4xl font-bold mb-12 text-color-off-white">
                     Elsewhere on the Web
