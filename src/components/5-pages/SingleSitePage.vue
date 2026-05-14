@@ -666,17 +666,17 @@ onMounted(() => {
                                 inclusion strategy, working across teams to define structure, roles, and a long-term
                                 approach to
                                 accessible services.</p>
-                            <p class="font-primary text-xs">
+                            <p class="font-primary">
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">User
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">User
                                     Research</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Public
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Public
                                     Sector</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Strategy</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Strategy</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Team
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Team
                                     Design</span>
                             </p>
                         </div>
@@ -691,13 +691,13 @@ onMounted(() => {
                             <p class="font-primary mb-6 text-sm">Improved and expanded internal accessibility policies
                                 to better
                                 support compliance, consistency, and inclusive delivery across the organisation.</p>
-                            <p class="font-primary text-xs">
+                            <p class="font-primary">
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Accessibility</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Accessibility</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Policy</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Policy</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Public
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Public
                                     Sector</span>
                             </p>
                         </div>
@@ -714,19 +714,19 @@ onMounted(() => {
                                 teams understand accessibility barriers through structured, hands-on experiences—while
                                 clearly
                                 framing the limits of simulation vs lived experience.</p>
-                            <p class="font-primary text-xs">
+                            <p class="font-primary">
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Accessibility</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Accessibility</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Assistive
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Assistive
                                     Technology</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Inclusive
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Inclusive
                                     Design</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Workshops</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Workshops</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Public
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Public
                                     Sector</span>
                             </p>
                         </div>
@@ -742,17 +742,17 @@ onMounted(() => {
                                 teams to
                                 deliver accessible content independently, covering WCAG, assistive tech, documents, and
                                 inclusive communication.</p>
-                            <p class="font-primary text-xs">
+                            <p class="font-primary">
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">WCAG</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">WCAG</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Documentation</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Documentation</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Training</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Training</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Accessibility</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Accessibility</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Public
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Public
                                     Sector</span>
                             </p>
                         </div>
@@ -769,14 +769,14 @@ onMounted(() => {
                                 targeted
                                 at
                                 developers.</p>
-                            <p class="font-primary text-xs"><span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
+                            <p class="font-primary"><span
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                             </p>
                         </div>
                     </div>
@@ -791,16 +791,16 @@ onMounted(() => {
                                 all
                                 courses
                                 produced by Sponge.</p>
-                            <p class="font-primary text-xs"><span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
+                            <p class="font-primary"><span
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">NodeJS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">NodeJS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                             </p>
                         </div>
                     </div>
@@ -816,16 +816,16 @@ onMounted(() => {
                                 courses
                                 produced by Sponge.
                             </p>
-                            <p class="font-primary text-xs"><span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
+                            <p class="font-primary"><span
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">NodeJS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">NodeJS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                             </p>
                         </div>
                     </div>
@@ -845,16 +845,16 @@ onMounted(() => {
                                     class="underline hover:text-color-teal">CyberSrpinters</a> game, and development of
                                 <a href="https://www.ncsc.gov.uk/collection/cyberfirstnavigators"
                                     class="underline hover:text-color-teal">CyberFirst Navigators</a>.</p>
-                            <p class="font-primary text-xs"><span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
+                            <p class="font-primary"><span
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">NodeJS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">NodeJS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">StencilJS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">StencilJS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                             </p>
                         </div>
                     </div>
@@ -882,30 +882,30 @@ onMounted(() => {
                                     href="https://www.safedrivingforlife.info/ridefree/"
                                     class="underline hover:text-color-teal transition-all">ridefree</a>.
                             </p>
-                            <p class="font-primary text-xs"><span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
+                            <p class="font-primary"><span
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">NodeJS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">NodeJS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Python</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Python</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Django</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Django</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Wagtail
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Wagtail
                                     CMS</span> <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Docker</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Docker</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">GitHub
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">GitHub
                                     Actions</span> <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Google
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Google
                                     Cloud</span> <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Agile</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Agile</span>
                             </p>
                         </div>
                     </div>
@@ -922,12 +922,12 @@ onMounted(() => {
                                 related to
                                 Snaps, Lens Studio
                                 software.</p>
-                            <p class="font-primary text-xs"><span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
+                            <p class="font-primary"><span
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Communication</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Communication</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Collaboration</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Collaboration</span>
                             </p>
                         </div>
                     </div>
@@ -942,14 +942,14 @@ onMounted(() => {
                                 annually to
                                 all
                                 employees.</p>
-                            <p class="font-primary text-xs"><span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
+                            <p class="font-primary"><span
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                             </p>
                         </div>
                     </div>
@@ -964,14 +964,14 @@ onMounted(() => {
                             <p class="font-primary mb-6 text-sm">Updated training materials provided to their retail
                                 sales team.
                             </p>
-                            <p class="font-primary text-xs"><span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
+                            <p class="font-primary"><span
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">VueJS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">CSS</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Sass</span>
                             </p>
                         </div>
                     </div>
@@ -983,12 +983,12 @@ onMounted(() => {
                                 <span class="emjo inline">🔧</span> Perkbox @ Rock Mission</h3>
                             <p class="font-primary mb-6 text-sm">Developed an engagement awards platform for top HR
                                 professionals.</p>
-                            <p class="font-primary text-xs"><span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
+                            <p class="font-primary"><span
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">JavaScript</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">PHP</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">PHP</span>
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">WordPress</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">WordPress</span>
                             </p>
                         </div>
                     </div>
@@ -1018,7 +1018,7 @@ onMounted(() => {
                         <div aria-hidden="true" class="absolute -left-8 bottom-8 w-24 h-24 rotate-12 bg-color-red opacity-50"></div>
 
                         <div class="relative">
-                            <p class="font-secondary text-xs tracking-[0.2em] text-color-yellow mb-4">FOCUS MAP</p>
+                            <p class="font-secondary tracking-[0.2em] text-color-yellow mb-4">FOCUS MAP</p>
                             <h3 class="font-secondary text-3xl leading-tight text-color-off-white mb-4">
                                 Strategy that ships. Delivery that includes everyone.
                             </h3>
@@ -1041,17 +1041,17 @@ onMounted(() => {
                             <p class="font-primary text-color-off-black">
                                 
                                 <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">WCAG audits</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">WCAG audits</span>
                                     <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">accessibility strategy</span> 
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">accessibility strategy</span> 
                                     <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">assistive technology testing</span> 
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">assistive technology testing</span> 
                                     <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">inclusive design</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">inclusive design</span>
                                     <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">accessibility reviews</span> 
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">accessibility reviews</span> 
                                     <span
-                                    class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">remediation support</span>
+                                    class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">remediation support</span>
                                 </p>
                         </article>
 
@@ -1059,12 +1059,12 @@ onMounted(() => {
                             <span class="font-secondary absolute -top-3 left-4 bg-color-off-white border-2 border-color-off-black px-3 py-1 text-sm">02</span>
                             <h3 class="font-secondary text-2xl text-color-off-white mt-4 mb-3">Design & Development</h3>
                             <p class="font-primary text-color-off-white">
-                                <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Semantic HTML</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Design Systems</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Front-end Architecture</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Responsive Interfaces</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Performance</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Component-based Development</span>
+                                <span class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Semantic HTML</span>
+                                <span class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Design Systems</span>
+                                <span class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Front-end Architecture</span>
+                                <span class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Responsive Interfaces</span>
+                                <span class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Performance</span>
+                                <span class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Component-based Development</span>
                             </p>
                         </article>
 
@@ -1072,12 +1072,12 @@ onMounted(() => {
                             <span class="font-secondary absolute -top-3 left-4 bg-color-yellow border-2 border-color-off-black px-3 py-1 text-sm">03</span>
                             <h3 class="font-secondary text-2xl text-color-off-white mt-4 mb-3">Collaboration & Delivery</h3>
                             <p class="font-primary text-color-off-white">
-                                <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Workshop Facilitation</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Cross-team Collaboration</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Documentation</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Mentoring</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">User-centred Thinking</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Communication</span>
+                                <span class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Workshop Facilitation</span>
+                                <span class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Cross-team Collaboration</span>
+                                <span class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Documentation</span>
+                                <span class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Mentoring</span>
+                                <span class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">User-centred Thinking</span>
+                                <span class="tag inline-block mb-2 text-color-off-white bg-color-off-black px-2 py-1 rounded mr-2">Communication</span>
                             </p>
                         </article>
 
@@ -1085,17 +1085,17 @@ onMounted(() => {
                             <span class="font-secondary absolute -top-3 left-4 bg-color-off-black text-color-off-white border-2 border-color-off-black px-3 py-1 text-sm">04</span>
                             <h3 class="font-secondary text-2xl text-color-off-black mt-4 mb-3">Technologies</h3>
                             <p class="font-primary text-color-off-black">
-                                <span class="tag inline-block mb-2 text-xs text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">JavaScript</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">TypeScript</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">Vue</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">React</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">Node.js</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">Python</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">Django</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">PHP</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">Docker</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">GitHub Actions</span>
-                                <span class="tag inline-block mb-2 text-xs text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">Google Cloud</span>
+                                <span class="tag inline-block mb-2 text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">JavaScript</span>
+                                <span class="tag inline-block mb-2 text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">TypeScript</span>
+                                <span class="tag inline-block mb-2 text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">Vue</span>
+                                <span class="tag inline-block mb-2 text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">React</span>
+                                <span class="tag inline-block mb-2 text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">Node.js</span>
+                                <span class="tag inline-block mb-2 text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">Python</span>
+                                <span class="tag inline-block mb-2 text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">Django</span>
+                                <span class="tag inline-block mb-2 text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">PHP</span>
+                                <span class="tag inline-block mb-2 text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">Docker</span>
+                                <span class="tag inline-block mb-2 text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">GitHub Actions</span>
+                                <span class="tag inline-block mb-2 text-color-off-black bg-color-off-white px-2 py-1 rounded mr-2">Google Cloud</span>
                             </p>
                         </article>
                     </div>
