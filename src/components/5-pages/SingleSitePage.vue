@@ -21,8 +21,10 @@ import Snap from '@/assets/images/company-logos/snap.jpg';
 import RockMission from '@/assets/images/company-logos/rockmission.jpg';
 import Sponge from '@/assets/images/company-logos/sponge.jpg';
 
-import MaleProfile from '@/assets/images/recommendations/m.png';
-import FemaleProfile from '@/assets/images/recommendations/f.png';
+import MaleProfile1 from '@/assets/images/recommendations/m-1.png';
+import FemaleProfile1 from '@/assets/images/recommendations/f-1.png';
+import FemaleProfile2 from '@/assets/images/recommendations/f-2.png';
+import FemaleProfile3 from '@/assets/images/recommendations/f-3.png';
 
 const state = reactive({
     light: true,
@@ -38,6 +40,23 @@ let wordSpans = [];
 
 const heroRoles = ["Accessibility Specialist", "Developer", "Designer", "Artist", "Creative Coder", "Problem Solver"];
 const profileImage = computed(() => (state.light ? LightMe : DarkMe));
+
+// Toggle toolbar buttons on/off from one place.
+const toolbarButtonToggles = {
+    themeMode: true,
+    motion: true,
+    readAloud: false,
+};
+
+const enabledToolbarButtons = computed(() => {
+    const buttonOrder = ['themeMode', 'motion', 'readAloud'];
+    return buttonOrder.filter((buttonKey) => toolbarButtonToggles[buttonKey]);
+});
+
+const isLastToolbarButton = (buttonKey) => {
+    const activeButtons = enabledToolbarButtons.value;
+    return activeButtons.length > 0 && activeButtons[activeButtons.length - 1] === buttonKey;
+};
 
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark');
@@ -339,10 +358,10 @@ onMounted(() => {
 </script>
 <template>
     <div class="z-10 fixed top-0 right-0 flex flex-col print:hidden" role="toolbar" aria-label="Display settings">
-        <div class="relative group">
+        <div v-if="toolbarButtonToggles.themeMode" class="relative group">
             <button type="button" @click="lightDarkMode"
                 class="cursor-pointer hover:opacity-75 p-4 border-l-4 border-color-off-black"
-                :class="state.light ? 'bg-color-off-white' : 'bg-color-teal'"
+                :class="[state.light ? 'bg-color-off-white' : 'bg-color-teal', { 'border-b-4': isLastToolbarButton('themeMode') }]"
                 :aria-label="state.light ? 'Switch to dark mode' : 'Switch to light mode'"
                 :aria-pressed="!state.light" aria-describedby="theme-toggle-tooltip">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -364,10 +383,10 @@ onMounted(() => {
             </span>
         </div>
 
-        <div class="relative group">
+        <div v-if="toolbarButtonToggles.motion" class="relative group">
             <button type="button" @click="toggleMotion"
-                class="cursor-pointer hover:opacity-75 p-4 border-l-4 border-color-off-black border-b-4"
-                :class="state.light ? 'bg-color-off-white' : 'bg-color-teal'"
+                class="cursor-pointer hover:opacity-75 p-4 border-l-4 border-color-off-black"
+                :class="[state.light ? 'bg-color-off-white' : 'bg-color-teal', { 'border-b-4': isLastToolbarButton('motion') }]"
                 :aria-label="state.motionReduced ? 'Enable motion' : 'Reduce motion'"
                 :aria-pressed="state.motionReduced" aria-describedby="motion-toggle-tooltip">
                 <!-- Sparkles: motion is active -->
@@ -401,10 +420,10 @@ onMounted(() => {
             </span>
         </div>
 
-        <!-- <div class="relative group">
+        <div v-if="toolbarButtonToggles.readAloud" class="relative group">
             <button type="button" @click="toggleReadAloud"
-                class="cursor-pointer hover:opacity-75 p-4 border-l-4 border-color-off-black border-b-4"
-                :class="state.light ? 'bg-color-off-white' : 'bg-color-teal'"
+            class="cursor-pointer hover:opacity-75 p-4 border-l-4 border-color-off-black"
+                :class="[state.light ? 'bg-color-off-white' : 'bg-color-teal', { 'border-b-4': isLastToolbarButton('readAloud') }]"
                 :aria-label="state.readAloud ? 'Stop reading' : 'Read page aloud'"
                 :aria-pressed="state.readAloud" aria-describedby="read-aloud-tooltip">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -420,7 +439,7 @@ onMounted(() => {
                 class="pointer-events-none absolute right-full top-1/2 mr-3 -translate-y-1/2 whitespace-nowrap bg-color-off-black text-color-off-white border-2 border-color-off-white px-3 py-2 text-sm font-primary opacity-0 transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100">
                 {{ state.readAloud ? 'Stop reading page' : 'Read page aloud' }}
             </span>
-        </div> -->
+        </div>
     </div>
     <main id="main-content">
         <!-- Hero Section -->
@@ -1163,7 +1182,7 @@ onMounted(() => {
                                 </div>
                             </div>
                             <div>
-                                <img :src="FemaleProfile" alt="" class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
+                                <img :src="FemaleProfile1" alt="" class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
                                 <p class="font-primary text-color-off-black text-center">Project Manager</p>
                             </div>
                         </div>
@@ -1190,7 +1209,7 @@ Source: "Jason has outstanding communication skills and excellent approach to ti
                                 </div>
                             </div>
                             <div>
-                                <img :src="FemaleProfile" alt="" class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
+                                <img :src="FemaleProfile2" alt="" class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
                                 <p class="font-primary text-color-off-black text-center"><!--Engineering--> Operations
                                     Manager
                                 </p>
@@ -1223,7 +1242,7 @@ Source: "One of Jason's most admirable traits is his openness to feedback... wel
                                 </div>
                             </div>
                             <div>
-                                <img :src="FemaleProfile" alt="" class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
+                                <img :src="FemaleProfile3" alt="" class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
                                 <p class="font-primary text-color-off-black text-center">Human Resources Generalist</p>
                             </div>
                         </div>
@@ -1251,7 +1270,7 @@ Source: "Jason is a very professional and driven individual, always eager to lea
                                 </div>
                             </div>
                             <div>
-                                <img :src="MaleProfile" alt="" class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
+                                <img :src="MaleProfile1" alt="" class="w-14 h-14 mb-4 bg-white rounded-full m-auto">
                                 <p class="font-primary text-color-off-black text-center">Senior Software Developer</p>
                             </div>
                         </div>
