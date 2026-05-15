@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, watch, nextTick, reactive, computed } from 'vue';
+import { onMounted, onBeforeUnmount, watch, nextTick, reactive, computed } from 'vue';
 
 import LightMe from '@/assets/images/me/light.png';
 import DarkMe from '@/assets/images/me/light.png';
@@ -32,15 +32,57 @@ const state = reactive({
     reducedMotionWordIndex: 0,
     readAloud: false,
     currentWordIndex: 0,
+    easterEggsEnabled: true,
+    heroRoleUnlocked: false,
+    creativeMode: false,
+    accessibilityInspector: false,
+    easterEggMessage: '',
 });
 
 let speechSynthesisUtterance = null;
 let allWords = [];
 let wordSpans = [];
+let typingTimeoutId = null;
+let secretMessageTimeoutId = null;
+let secretKeyBuffer = '';
 
-const heroRoles = ["Accessibility Specialist", "Developer", "Designer", "Artist", "Creative Coder", "Problem Solver"];
+const baseHeroRoles = ["Accessibility Specialist", "Developer", "Designer", "Artist", "Creative Coder", "Problem Solver"];
+const bonusHeroRoles = ["A11y Guardian", "Design Detective", "Coffee Compiler"];
+const heroRoles = computed(() => (state.heroRoleUnlocked ? [...baseHeroRoles, ...bonusHeroRoles] : baseHeroRoles));
 const profileImage = computed(() => (state.light ? LightMe : DarkMe));
 const resumeUrl = '/resume.pdf';
+
+const inspectorPalette = computed(() => {
+    if (state.light) {
+        return [
+            { label: 'Hero', foreground: '#141414', background: '#FFAA01' },
+            { label: 'About', foreground: '#141414', background: '#FE0000' },
+            { label: 'Projects', foreground: '#F5F5F5', background: '#141414' },
+            { label: 'Social', foreground: '#F5F5F5', background: '#009899' },
+        ];
+    }
+
+    return [
+        { label: 'Hero', foreground: '#F5F5F5', background: '#1E1E1E' },
+        { label: 'About', foreground: '#1E1E1E', background: '#DC143C' },
+        { label: 'Projects', foreground: '#F5F5F5', background: '#1E1E1E' },
+        { label: 'Social', foreground: '#F5F5F5', background: '#006666' },
+    ];
+});
+
+const inspectorRows = computed(() => inspectorPalette.value.map((entry) => ({
+    ...entry,
+    ratio: getContrastRatio(entry.foreground, entry.background).toFixed(2),
+})));
+
+const resetEasterEggState = () => {
+    state.heroRoleUnlocked = false;
+    state.creativeMode = false;
+    state.accessibilityInspector = false;
+    state.easterEggMessage = '';
+    secretKeyBuffer = '';
+    updateDocumentClass('creative-mode', false);
+};
 
 // Toggle toolbar buttons on/off from one place.
 const toolbarButtonToggles = {
@@ -80,6 +122,106 @@ const isLastToolbarButton = (buttonKey) => {
     return activeButtons.length > 0 && activeButtons[activeButtons.length - 1] === buttonKey;
 };
 
+const setEasterEggsEnabled = (enabled) => {
+    state.easterEggsEnabled = enabled;
+
+    if (!enabled) {
+        resetEasterEggState();
+    }
+};
+
+const updateDocumentClass = (className, enabled) => {
+    document.documentElement.classList.toggle(className, enabled);
+};
+
+const announceEasterEgg = (message) => {
+    if (!state.easterEggsEnabled) return;
+
+    state.easterEggMessage = message;
+
+    if (secretMessageTimeoutId) {
+        clearTimeout(secretMessageTimeoutId);
+    }
+
+    secretMessageTimeoutId = setTimeout(() => {
+        state.easterEggMessage = '';
+    }, 4500);
+};
+
+const unlockHeroRoles = () => {
+    if (!state.easterEggsEnabled) return;
+
+    if (state.heroRoleUnlocked) return;
+
+    state.heroRoleUnlocked = true;
+    announceEasterEgg('Bonus hero roles unlocked.');
+};
+
+const toggleAccessibilityInspector = () => {
+    if (!state.easterEggsEnabled) return;
+
+    state.accessibilityInspector = !state.accessibilityInspector;
+    announceEasterEgg(state.accessibilityInspector ? 'Accessibility Inspector enabled.' : 'Accessibility Inspector hidden.');
+};
+
+const setCreativeMode = (enabled) => {
+    if (!state.easterEggsEnabled) return;
+
+    state.creativeMode = enabled;
+    updateDocumentClass('creative-mode', enabled);
+    localStorage.creativeMode = enabled ? 'true' : 'false';
+    announceEasterEgg(enabled ? 'Creative mode unlocked.' : 'Creative mode disabled.');
+};
+
+const toggleCreativeMode = () => {
+    setCreativeMode(!state.creativeMode);
+};
+
+const shouldIgnoreSecretInput = (target) => {
+    if (!(target instanceof HTMLElement)) return false;
+
+    return Boolean(target.closest('input, textarea, select, [contenteditable="true"]'));
+};
+
+const handleSecretShortcuts = (event) => {
+    if (!state.easterEggsEnabled) return;
+
+    if (shouldIgnoreSecretInput(event.target)) return;
+
+    const key = event.key.toLowerCase();
+    const hasModifier = event.metaKey || event.ctrlKey || event.altKey;
+
+    if ((event.metaKey || event.ctrlKey) && event.shiftKey && key === 'a') {
+        event.preventDefault();
+        toggleAccessibilityInspector();
+        return;
+    }
+
+    if (hasModifier || key.length !== 1) {
+        secretKeyBuffer = '';
+        return;
+    }
+
+    secretKeyBuffer = `${secretKeyBuffer}${key}`.slice(-12);
+
+    if (secretKeyBuffer.endsWith('a11y')) {
+        toggleAccessibilityInspector();
+        secretKeyBuffer = '';
+        return;
+    }
+
+    if (secretKeyBuffer.endsWith('jason')) {
+        unlockHeroRoles();
+        secretKeyBuffer = '';
+        return;
+    }
+
+    if (secretKeyBuffer.endsWith('creative')) {
+        toggleCreativeMode();
+        secretKeyBuffer = '';
+    }
+};
+
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark');
     localStorage.theme = 'dark';
@@ -93,6 +235,10 @@ if (localStorage.motionReduced === 'true' || (!('motionReduced' in localStorage)
     document.documentElement.classList.add('reduce-motion');
     localStorage.motionReduced = 'true';
     state.motionReduced = true;
+}
+if (localStorage.creativeMode === 'true') {
+    updateDocumentClass('creative-mode', true);
+    state.creativeMode = true;
 }
 const lightDarkMode = () => {
     state.light = !state.light;
@@ -304,7 +450,23 @@ const toggleReadAloud = () => {
 };
 
 let year = new Date().getFullYear();
+const cleanupEasterEggListeners = () => {
+    window.removeEventListener('keydown', handleSecretShortcuts);
+
+    if (typingTimeoutId) {
+        clearTimeout(typingTimeoutId);
+    }
+
+    if (secretMessageTimeoutId) {
+        clearTimeout(secretMessageTimeoutId);
+    }
+};
+
+onBeforeUnmount(cleanupEasterEggListeners);
+
 onMounted(() => {
+    window.addEventListener('keydown', handleSecretShortcuts);
+
     let wordIndex = 0;
     let charIndex = 0;
     let currentWord = '';
@@ -312,13 +474,13 @@ onMounted(() => {
         if (state.motionReduced) return;
         const typingElement = document.getElementById("typing");
         if (!typingElement) return;
-        if (charIndex < heroRoles[wordIndex].length) {
-            currentWord += heroRoles[wordIndex].charAt(charIndex);
+        if (charIndex < heroRoles.value[wordIndex].length) {
+            currentWord += heroRoles.value[wordIndex].charAt(charIndex);
             typingElement.innerHTML = currentWord;
             charIndex++;
-            setTimeout(typeWord, 100); // Adjust typing speed here
+            typingTimeoutId = setTimeout(typeWord, 100); // Adjust typing speed here
         } else {
-            setTimeout(deleteWord, 1500); // Pause before deleting
+            typingTimeoutId = setTimeout(deleteWord, 1500); // Pause before deleting
         }
     }
     function deleteWord() {
@@ -329,10 +491,10 @@ onMounted(() => {
             currentWord = currentWord.slice(0, -1);
             typingElement.innerHTML = currentWord;
             charIndex--;
-            setTimeout(deleteWord, 50); // Adjust deleting speed here
+            typingTimeoutId = setTimeout(deleteWord, 50); // Adjust deleting speed here
         } else {
-            wordIndex = (wordIndex + 1) % heroRoles.length;
-            setTimeout(typeWord, 500); // Pause before typing next word
+            wordIndex = (wordIndex + 1) % heroRoles.value.length;
+            typingTimeoutId = setTimeout(typeWord, 500); // Pause before typing next word
         }
     }
     // Start the typing effect (skip if motion is already reduced)
@@ -343,6 +505,9 @@ onMounted(() => {
             wordIndex = 0;
             charIndex = 0;
             currentWord = '';
+            if (typingTimeoutId) {
+                clearTimeout(typingTimeoutId);
+            }
             await nextTick();
             typeWord();
         }
@@ -388,7 +553,7 @@ onMounted(() => {
     sections.forEach(section => {
         observer.observe(section);
     });
-})
+});
 </script>
 <template>
     <div class="z-10 fixed top-0 right-0 flex flex-col print:hidden" role="toolbar" aria-label="Display settings">
@@ -474,6 +639,36 @@ onMounted(() => {
                 {{ state.readAloud ? 'Stop reading page' : 'Read page aloud' }}
             </span>
         </div>
+    </div>
+    <div v-if="state.accessibilityInspector" class="fixed left-4 bottom-4 z-20 w-[min(92vw,24rem)] border-4 border-color-off-black bg-color-off-white p-4 shadow-lg print:hidden"
+        role="status" aria-live="polite" aria-atomic="true">
+        <div class="flex items-start justify-between gap-4">
+            <div>
+                <p class="font-secondary text-sm tracking-[0.14em] text-color-red mb-2">INSPECTOR MODE</p>
+                <h2 class="font-secondary text-2xl text-color-off-black mb-2">Accessibility snapshot</h2>
+                <p class="font-primary text-sm text-color-off-black mb-4">
+                    Shortcut active. Contrast and state checks are visible until you hide this panel.
+                </p>
+            </div>
+            <button type="button" class="font-secondary shrink-0 border-2 border-color-off-black px-3 py-2 text-sm font-bold text-color-off-black hover:bg-color-yellow"
+                @click="toggleAccessibilityInspector" aria-label="Hide accessibility inspector">
+                Close
+            </button>
+        </div>
+
+        <dl class="space-y-3">
+            <div v-for="row in inspectorRows" :key="row.label" class="border-2 border-color-off-black p-3">
+                <dt class="font-secondary text-sm font-bold text-color-off-black">{{ row.label }}</dt>
+                <dd class="font-primary text-sm text-color-off-black">
+                    Contrast {{ row.ratio }}:1 | {{ row.foreground }} on {{ row.background }}
+                </dd>
+            </div>
+        </dl>
+    </div>
+
+    <div v-if="state.easterEggMessage" class="fixed left-1/2 bottom-4 z-30 w-[min(92vw,28rem)] -translate-x-1/2 border-4 border-color-off-black bg-color-off-black px-4 py-3 text-center shadow-lg print:hidden"
+        role="status" aria-live="polite" aria-atomic="true">
+        <p class="font-secondary text-sm text-color-off-white">{{ state.easterEggMessage }}</p>
     </div>
     <main id="main-content">
         <!-- Hero Section -->

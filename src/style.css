@@ -122,6 +122,28 @@ html {
   filter: brightness(0.7);
 }
 
+.creative-mode body {
+  background-image:
+    radial-gradient(circle at top left, rgba(255, 170, 1, 0.12), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(0, 152, 153, 0.12), transparent 30%);
+  background-attachment: fixed;
+}
+
+.creative-mode body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.14;
+  background-image: var(--paper-texture);
+  background-size: 420px 420px;
+  mix-blend-mode: multiply;
+}
+
+.creative-mode main section {
+  background-blend-mode: soft-light;
+}
+
 /* Read-aloud accessibility feature */
 .read-aloud-word {
   transition: all 0.1s ease-in-out;
